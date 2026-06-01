@@ -116,37 +116,13 @@ Android 操作系统在全球范围内被广泛使用，其中一种使用案例
 
     ```java
     @Composable
-    ```
-
-    ```java
     fun SampleButton() {
-    ```
-
-    ```java
         Button(
-    ```
-
-    ```java
            onClick = { /* Handle button click */ },
-    ```
-
-    ```java
            modifier = Modifier.fillMaxWidth()
-    ```
-
-    ```java
         ) {
-    ```
-
-    ```java
     Text("Click me")
-    ```
-
-    ```java
         }
-    ```
-
-    ```java
     }
     ```
 
@@ -154,81 +130,24 @@ Android 操作系统在全球范围内被广泛使用，其中一种使用案例
 
     ```java
     @Composable
-    ```
-
-    ```java
     fun WearApp() {
-    ```
-
-    ```java
         WearOSExampleTheme {
-    ```
-
-    ```java
             /* If you have enough items in your list, use
-    ```
-
-    ```java
                [ScalingLazyColumn] which is an optimized
-    ```
-
-    ```java
                version of LazyColumn for wear devices with
-    ```
-
-    ```java
                some added features. For more information,
-    ```
-
-    ```java
                see d.android.com/wear/compose./
-    ```
-
-    ```java
             */
-    ```
-
-    ```java
             Column(
-    ```
-
-    ```java
                 modifier = Modifier
-    ```
-
-    ```java
                     .fillMaxSize()
-    ```
-
-    ```java
                     .background(
-    ```
-
-    ```java
                         MaterialTheme.colors.background),
-    ```
-
-    ```java
                 verticalArrangement = Arrangement.Center
-    ```
-
-    ```java
             ) {
-    ```
-
-    ```java
     SampleButton()
-    ```
-
-    ```java
             }
-    ```
-
-    ```java
         }
-    ```
-
-    ```java
     }
     ```
 
@@ -236,37 +155,13 @@ Android 操作系统在全球范围内被广泛使用，其中一种使用案例
 
     ```java
     class MainActivity : ComponentActivity() {
-    ```
-
-    ```java
         override fun onCreate(savedInstanceState: Bundle?)
-    ```
-
-    ```java
         {
-    ```
-
-    ```java
             super.onCreate(savedInstanceState)
-    ```
-
-    ```java
             setContent {
-    ```
-
-    ```java
     WearApp()
-    ```
-
-    ```java
             }
-    ```
-
-    ```java
     }
-    ```
-
-    ```java
     }
     ```
 
@@ -274,21 +169,9 @@ Android 操作系统在全球范围内被广泛使用，其中一种使用案例
 
     ```java
     @Preview(device = Devices.WEAR_OS_SMALL_ROUND, showSystemUi = true)
-    ```
-
-    ```java
     @Composable
-    ```
-
-    ```java
     fun DefaultPreview() {
-    ```
-
-    ```java
         WearApp()
-    ```
-
-    ```java
     }
     ```
 
@@ -304,109 +187,31 @@ Android 操作系统在全球范围内被广泛使用，其中一种使用案例
 
     ```java
     @Composable
-    ```
-
-    ```java
     fun SampleButton2(
-    ```
-
-    ```java
     ) {
-    ```
-
-    ```java
         Row(
-    ```
-
-    ```java
             modifier = Modifier
-    ```
-
-    ```java
                 .fillMaxWidth()
-    ```
-
-    ```java
                 .padding(bottom = 10.dp),
-    ```
-
-    ```java
             horizontalArrangement = Arrangement.Center
-    ```
-
-    ```java
         ) {
-    ```
-
-    ```java
     Button(
-    ```
-
-    ```java
                 modifier = Modifier.size(
-    ```
-
-    ```java
                     ButtonDefaults.LargeButtonSize),
-    ```
-
-    ```java
                 onClick = { /* Handle button click */ },
-    ```
-
-    ```java
             ) {
-    ```
-
-    ```java
     Icon(
-    ```
-
-    ```java
                     imageVector =
-    ```
-
-    ```java
                         Icons.Rounded.AccountBox,
-    ```
-
-    ```java
                     contentDescription = stringResource(
-    ```
-
-    ```java
                         id = R.string.account_box_icon),
-    ```
-
-    ```java
                     modifier = Modifier
-    ```
-
-    ```java
                         .size(24.dp)
-    ```
-
-    ```java
                         .wrapContentSize(
-    ```
-
-    ```java
                             align = Alignment.Center)
-    ```
-
-    ```java
                 )
-    ```
-
-    ```java
             }
-    ```
-
-    ```java
         }
-    ```
-
-    ```java
     }
     ```
 
@@ -452,9 +257,6 @@ Android 操作系统在全球范围内被广泛使用，其中一种使用案例
 
     ```java
     @Composable
-    ```
-
-    ```java
     fun WearOSList(itemList: List<String>) {. . .}
     ```
 
@@ -462,25 +264,10 @@ Android 操作系统在全球范围内被广泛使用，其中一种使用案例
 
     ```java
     @Composable
-    ```
-
-    ```java
     fun  WearOSList(itemList: List<String>) {
-    ```
-
-    ```java
         ScalingLazyColumn() {
-    ```
-
-    ```java
             // TODO: Add items to the list here
-    ```
-
-    ```java
         }
-    ```
-
-    ```java
     }
     ```
 
@@ -490,17 +277,8 @@ Android 操作系统在全球范围内被广泛使用，其中一种使用案例
 
     ```java
     @Composable
-    ```
-
-    ```java
     fun WearOSListItem(item: String) {
-    ```
-
-    ```java
         Text(text = item)
-    ```
-
-    ```java
     }
     ```
 
@@ -508,33 +286,12 @@ Android 操作系统在全球范围内被广泛使用，其中一种使用案例
 
     ```java
     val itemList = listOf(
-    ```
-
-    ```java
         "Item 1",
-    ```
-
-    ```java
         "Item 2",
-    ```
-
-    ```java
         "Item 3",
-    ```
-
-    ```java
         "Item 4",
-    ```
-
-    ```java
         "Item 5",
-    ```
-
-    ```java
         . . .
-    ```
-
-    ```java
     )
     ```
 
@@ -542,33 +299,12 @@ Android 操作系统在全球范围内被广泛使用，其中一种使用案例
 
     ```java
     {
-    ```
-
-    ```java
         // SampleButton()
-    ```
-
-    ```java
         //SampleButton2()
-    ```
-
-    ```java
         WearOSList(
-    ```
-
-    ```java
             itemList = itemList,
-    ```
-
-    ```java
             modifier = contentModifier
-    ```
-
-    ```java
         )
-    ```
-
-    ```java
     }
     ```
 
@@ -610,9 +346,6 @@ Android 操作系统在全球范围内被广泛使用，其中一种使用案例
 
     ```java
     @Composable
-    ```
-
-    ```java
     fun MessageCard(){. . .}
     ```
 
@@ -626,37 +359,13 @@ Android 操作系统在全球范围内被广泛使用，其中一种使用案例
 
     ```java
     @Composable
-    ```
-
-    ```java
     fun MessageCard() {
-    ```
-
-    ```java
         AppCard(
-    ```
-
-    ```java
             onClick = { /*TODO*/ },
-    ```
-
-    ```java
             appName = { /*TODO*/ },
-    ```
-
-    ```java
             time = { /*TODO*/ },
-    ```
-
-    ```java
             title = { /*TODO*/ }) {
-    ```
-
-    ```java
             }
-    ```
-
-    ```java
     }
     ```
 
@@ -664,109 +373,31 @@ Android 操作系统在全球范围内被广泛使用，其中一种使用案例
 
     ```java
     @Composable
-    ```
-
-    ```java
     fun MessageCard() {
-    ```
-
-    ```java
         AppCard(
-    ```
-
-    ```java
             modifier = Modifier
-    ```
-
-    ```java
                 .fillMaxWidth()
-    ```
-
-    ```java
                 .padding(bottom = 8.dp),
-    ```
-
-    ```java
             appImage = {
-    ```
-
-    ```java
     Icon(
-    ```
-
-    ```java
                     modifier = Modifier
-    ```
-
-    ```java
                         .size(24.dp)
-    ```
-
-    ```java
                         .wrapContentSize(
-    ```
-
-    ```java
                             align = Alignment.Center),
-    ```
-
-    ```java
                     imageVector = Icons.Rounded.Email,
-    ```
-
-    ```java
                     contentDescription = stringResource(
-    ```
-
-    ```java
                         id = R.string.message_icon)
-    ```
-
-    ```java
                 )
-    ```
-
-    ```java
             },
-    ```
-
-    ```java
             onClick = { /*Do something*/ },
-    ```
-
-    ```java
             appName = {  stringResource(
-    ```
-
-    ```java
                 id = R.string.notification_message) },
-    ```
-
-    ```java
            time = {  stringResource(id = R.string.time) },
-    ```
-
-    ```java
            title = { stringResource(
-    ```
-
-    ```java
                id = R.string.notification_owner) }) {
-    ```
-
-    ```java
     Text(text = stringResource(
-    ```
-
-    ```java
                id = R.string.hi_android))
-    ```
-
-    ```java
            }
-    ```
-
-    ```java
     }
     ```
 
@@ -830,113 +461,32 @@ Android 操作系统在全球范围内被广泛使用，其中一种使用案例
 
     ```java
     @Composable
-    ```
-
-    ```java
     fun ChipWearExample(){
-    ```
-
-    ```java
         Chip(
-    ```
-
-    ```java
             modifier = Modifier
-    ```
-
-    ```java
                 .fillMaxWidth()
-    ```
-
-    ```java
                 .padding(bottom = 8.dp),
-    ```
-
-    ```java
             onClick = { /*TODO */ },
-    ```
-
-    ```java
             label = {
-    ```
-
-    ```java
     Text(
-    ```
-
-    ```java
                     text = stringResource(
-    ```
-
-    ```java
                         id = R.string.chip_detail),
-    ```
-
-    ```java
                     maxLines = 1,
-    ```
-
-    ```java
                     overflow = TextOverflow.Ellipsis
-    ```
-
-    ```java
                 )
-    ```
-
-    ```java
             },
-    ```
-
-    ```java
             icon = {
-    ```
-
-    ```java
     Icon(
-    ```
-
-    ```java
                     imageVector = Icons.Rounded.Phone,
-    ```
-
-    ```java
                     contentDescription = stringResource(
-    ```
-
-    ```java
                         id = R.string.phone),
-    ```
-
-    ```java
                     modifier = Modifier
-    ```
-
-    ```java
                         .size(24.dp)
-    ```
-
-    ```java
                         .wrapContentSize(
-    ```
-
-    ```java
                             align = Alignment.Center)
-    ```
-
-    ```java
                 )
-    ```
-
-    ```java
             },
-    ```
-
-    ```java
         )
-    ```
-
-    ```java
     }
     ```
 
@@ -952,105 +502,30 @@ Android 操作系统在全球范围内被广泛使用，其中一种使用案例
 
     ```java
     @Composable
-    ```
-
-    ```java
     fun ToggleChipWearExample() {
-    ```
-
-    ```java
         var isChecked by remember { mutableStateOf(true) }
-    ```
-
-    ```java
     ToggleChip(
-    ```
-
-    ```java
                 modifier = Modifier
-    ```
-
-    ```java
                     .fillMaxWidth()
-    ```
-
-    ```java
                     .padding(bottom = 8.dp),
-    ```
-
-    ```java
                 checked = isChecked,
-    ```
-
-    ```java
                 toggleControl = {
-    ```
-
-    ```java
     Switch(
-    ```
-
-    ```java
                         checked = isChecked
-    ```
-
-    ```java
                     )
-    ```
-
-    ```java
                 },
-    ```
-
-    ```java
                 onCheckedChange = {
-    ```
-
-    ```java
     isChecked = it
-    ```
-
-    ```java
                 },
-    ```
-
-    ```java
                 label = {
-    ```
-
-    ```java
     Text(
-    ```
-
-    ```java
                         text = stringResource(
-    ```
-
-    ```java
                             id = R.string.alert),
-    ```
-
-    ```java
                         maxLines = 1,
-    ```
-
-    ```java
                         overflow = TextOverflow.Ellipsis
-    ```
-
-    ```java
                     )
-    ```
-
-    ```java
                 }
-    ```
-
-    ```java
     )
-    ```
-
-    ```java
     }
     ```
 
@@ -1100,17 +575,8 @@ Android 操作系统在全球范围内被广泛使用，其中一种使用案例
 
     ```java
     /* If you have enough items in your list, use [ScalingLazyColumn] which is an optimized
-    ```
-
-    ```java
     * version of LazyColumn for wear devices with some added features. For more information,
-    ```
-
-    ```java
     * see d.android.com/wear/compose.
-    ```
-
-    ```java
     */
     ```
 
@@ -1128,25 +594,10 @@ Android 操作系统在全球范围内被广泛使用，其中一种使用案例
 
     ```java
     val contentModifier =  Modifier
-    ```
-
-    ```java
         .fillMaxWidth()
-    ```
-
-    ```java
         .padding(bottom = 8.dp)
-    ```
-
-    ```java
     val iconModifier =  Modifier
-    ```
-
-    ```java
         .size(24.dp)
-    ```
-
-    ```java
         .wrapContentSize(align = Alignment.Center)
     ```
 
@@ -1180,93 +631,27 @@ Android 操作系统在全球范围内被广泛使用，其中一种使用案例
 
     ```java
     Scaffold(
-    ```
-
-    ```java
         timeText = { TimeText(modifier =
-    ```
-
-    ```java
             Modifier.scrollAway(scalingListState)) },
-    ```
-
-    ```java
         vignette = { Vignette(vignettePosition =
-    ```
-
-    ```java
             VignettePosition.TopAndBottom) },
-    ```
-
-    ```java
         positionIndicator = {
-    ```
-
-    ```java
     PositionIndicator(
-    ```
-
-    ```java
                 scalingLazyListState = scalingListState
-    ```
-
-    ```java
             )
-    ```
-
-    ```java
         }
-    ```
-
-    ```java
     ) {
-    ```
-
-    ```java
     ScalingLazyColumn(
-    ```
-
-    ```java
             modifier = Modifier.fillMaxSize(),
-    ```
-
-    ```java
             autoCentering = AutoCenteringParams(
-    ```
-
-    ```java
                 itemIndex = 0),
-    ```
-
-    ```java
             state = scalingListState
-    ```
-
-    ```java
         ){
-    ```
-
-    ```java
     item { /*TODO*/ }
-    ```
-
-    ```java
     item { /*TODO*/ }
-    ```
-
-    ```java
     item { /*TODO*/ }
-    ```
-
-    ```java
     item { /*TODO*/ }
-    ```
-
-    ```java
         }
-    ```
-
-    ```java
     }
     ```
 
@@ -1274,21 +659,9 @@ Android 操作系统在全球范围内被广泛使用，其中一种使用案例
 
     ```java
     item { SampleButton(contentModifier) }
-    ```
-
-    ```java
     item { SampleButton2(contentModifier, iconModifier) }
-    ```
-
-    ```java
     item { MessageCard(contentModifier, iconModifier) }
-    ```
-
-    ```java
     item { ChipWearExample(contentModifier, iconModifier) }
-    ```
-
-    ```java
     item { ToggleChipWearExample(contentModifier) }
     ```
 

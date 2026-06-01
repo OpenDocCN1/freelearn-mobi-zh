@@ -449,9 +449,6 @@ Xcode 具有为您的图像集合构建纹理图集的能力，使其成为一�
       {
         [node removeFromParent];
       }];
-    ```
-
-    ```swift
     removeFromParent function, which is similar to removeFromSuperview in UIKit.
     ```
 

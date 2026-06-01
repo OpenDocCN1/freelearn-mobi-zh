@@ -44,29 +44,11 @@ Paging 库为开发者提供了令人难以置信的功能。如果您的代码�
 
     ```java
     //Retrofit
-    ```
-
-    ```java
     implementation 'com.squareup.retrofit2:retrofit:2.x.x'
-    ```
-
-    ```java
     implementation 'com.squareup.retrofit2:converter-gson:2.x.x'
-    ```
-
-    ```java
     //Coil you can also use Glide in this case
-    ```
-
-    ```java
     implementation 'com.google.accompanist:accompanist-coil:0.x.x'
-    ```
-
-    ```java
     //Paging 3.0
-    ```
-
-    ```java
     implementation 'Androidx.Paging:Paging-compose:1.x.x'
     ```
 
@@ -82,13 +64,7 @@ Paging 库为开发者提供了令人难以置信的功能。如果您的代码�
 
     ```java
     data class NewsArticle(
-    ```
-
-    ```java
         val author: String,
-    ```
-
-    ```java
         val content: String,val title: String ...)
     ```
 
@@ -96,45 +72,15 @@ Paging 库为开发者提供了令人难以置信的功能。如果您的代码�
 
     ```java
     data class NewsArticleResponse(
-    ```
-
-    ```java
         val articles: List<NewsArticle>,
-    ```
-
-    ```java
         val status: String,
-    ```
-
-    ```java
         val totalResults: Int
-    ```
-
-    ```java
     )
-    ```
-
-    ```java
     interface NewsApiService{
-    ```
-
-    ```java
         @GET("everything?q=apple&sortBy=popularity&apiKey=        ${YOURAPIKEY}&pageSize=20")
-    ```
-
-    ```java
         suspend fun getNews(
-    ```
-
-    ```java
             @Query("page") page: Int
-    ```
-
-    ```java
         ): NewsArticleResponse
-    ```
-
-    ```java
     }
     ```
 
@@ -142,21 +88,9 @@ Paging 库为开发者提供了令人难以置信的功能。如果您的代码�
 
     ```java
     class NewsArticlePagingSource(
-    ```
-
-    ```java
         private val newsApiService: NewsApiService,
-    ```
-
-    ```java
     ): PagingSource<Int, NewsArticle>() {
-    ```
-
-    ```java
     . . .
-    ```
-
-    ```java
     }
     ```
 
@@ -164,129 +98,36 @@ Paging 库为开发者提供了令人难以置信的功能。如果您的代码�
 
     ```java
     class NewsArticlePagingSource(
-    ```
-
-    ```java
         private val newsApiService: NewsApiService,
-    ```
-
-    ```java
     ) : PagingSource<Int, NewsArticle>() {
-    ```
-
-    ```java
         override fun getRefreshKey(state: PagingState<Int,
-    ```
-
-    ```java
         NewsArticle>): Int? {
-    ```
-
-    ```java
             return state.anchorPosition?.let {
-    ```
-
-    ```java
             anchorPosition ->
-    ```
-
-    ```java
                 state.closestPageToPosition(
-    ```
-
-    ```java
                     anchorPosition)?.prevKey?.plus(1)
-    ```
-
-    ```java
                     ?: state.closestPageToPosition(
-    ```
-
-    ```java
                         anchorPosition)?.nextKey?.minus(1)
-    ```
-
-    ```java
             }
-    ```
-
-    ```java
         }
-    ```
-
-    ```java
         override suspend fun load(params:
-    ```
-
-    ```java
         LoadParams<Int>): LoadResult<Int, NewsArticle> {
-    ```
-
-    ```java
             return try {
-    ```
-
-    ```java
                 val page = params.key ?: 1
-    ```
-
-    ```java
                 val response = newsApiService.getNews(
-    ```
-
-    ```java
                     page = page)
-    ```
-
-    ```java
                 LoadResult.Page(
-    ```
-
-    ```java
                     data = response.articles,
-    ```
-
-    ```java
                     prevKey = if (page == 1) null else
-    ```
-
-    ```java
                         page.minus(1),
-    ```
-
-    ```java
                     nextKey = if
-    ```
-
-    ```java
                         (response.articles.isEmpty()) null
-    ```
-
-    ```java
                             else page.plus(1),
-    ```
-
-    ```java
                 )
-    ```
-
-    ```java
             } catch (e: Exception) {
-    ```
-
-    ```java
                 LoadResult.Error(e)
-    ```
-
-    ```java
             }
-    ```
-
-    ```java
         }
-    ```
-
-    ```java
     }
     ```
 
@@ -294,49 +135,16 @@ Paging 库为开发者提供了令人难以置信的功能。如果您的代码�
 
     ```java
     class NewsArticleRepository @Inject constructor(
-    ```
-
-    ```java
         private val newsApiService: NewsApiService
-    ```
-
-    ```java
     ) {
-    ```
-
-    ```java
         fun getNewsArticle() = Pager(
-    ```
-
-    ```java
             config = PagingConfig(
-    ```
-
-    ```java
                 pageSize = 20,
-    ```
-
-    ```java
             ),
-    ```
-
-    ```java
             PagingSourceFactory = {
-    ```
-
-    ```java
                 NewsArticlePagingSource(newsApiService)
-    ```
-
-    ```java
             }
-    ```
-
-    ```java
         ).flow
-    ```
-
-    ```java
     }
     ```
 
@@ -344,53 +152,17 @@ Paging 库为开发者提供了令人难以置信的功能。如果您的代码�
 
     ```java
     @Module
-    ```
-
-    ```java
     @InstallIn(SingletonComponent::class)
-    ```
-
-    ```java
     class RetrofitModule{
-    ```
-
-    ```java
         @Singleton
-    ```
-
-    ```java
         @Provides
-    ```
-
-    ```java
         fun provideRetrofitInstance(): NewsApiService =
-    ```
-
-    ```java
         Retrofit.Builder()
-    ```
-
-    ```java
             .baseUrl(BASE_URL)
-    ```
-
-    ```java
             .addConverterFactory(
-    ```
-
-    ```java
                 GsonConverterFactory.create())
-    ```
-
-    ```java
             .build()
-    ```
-
-    ```java
             .create(NewsApiService::class.java)
-    ```
-
-    ```java
     }
     ```
 
@@ -474,45 +246,15 @@ class NewsViewModel @Inject constructor(
 
     ```java
     lifecycleScope.launch {
-    ```
-
-    ```java
         thePagingAdapter.loadStateFlow.collectLatest {
-    ```
-
-    ```java
             loadStates ->
-    ```
-
-    ```java
         progressBar.isVisible = loadStates.refresh is
-    ```
-
-    ```java
             LoadState.Loading
-    ```
-
-    ```java
         retry.isVisible = loadState.refresh !is
-    ```
-
-    ```java
             LoadState.Loading
-    ```
-
-    ```java
         errorMessage.isVisible = loadState.refresh is
-    ```
-
-    ```java
             LoadState.Error
-    ```
-
-    ```java
       }
-    ```
-
-    ```java
     }
     ```
 
@@ -522,25 +264,10 @@ class NewsViewModel @Inject constructor(
 
     ```java
     lifecycleScope.launchWhenCreated{
-    ```
-
-    ```java
         yourAdapter.loadStateFlow
-    ```
-
-    ```java
             .distinctUntilChangedBy { it.refresh }
-    ```
-
-    ```java
             .filter { it.refresh is LoadState.NotLoading }
-    ```
-
-    ```java
             .collect { binding.list.scrollToPosition(0) }
-    ```
-
-    ```java
     }
     ```
 
@@ -586,21 +313,9 @@ Paging 库为开发者提供了令人难以置信的功能，但有时您会遇�
 
     ```java
     data class StudentProfile(
-    ```
-
-    ```java
         val name: String,
-    ```
-
-    ```java
         val school: String,
-    ```
-
-    ```java
         val major: String
-    ```
-
-    ```java
     )
     ```
 
@@ -608,89 +323,26 @@ Paging 库为开发者提供了令人难以置信的功能，但有时您会遇�
 
     ```java
     class StudentRepository {
-    ```
-
-    ```java
         private val ourDataSource = (1..100).map {
-    ```
-
-    ```java
             StudentProfile(
-    ```
-
-    ```java
                 name = "Student $it",
-    ```
-
-    ```java
                 school = "MIT $it",
-    ```
-
-    ```java
                 major = "Computer Science $it"
-    ```
-
-    ```java
             )
-    ```
-
-    ```java
         }
-    ```
-
-    ```java
         suspend fun getStudents(page: Int, pageSize: Int):
-    ```
-
-    ```java
         Result<List<StudentProfile>> {
-    ```
-
-    ```java
             delay(timeMillis = 2000L) //the delay added is
-    ```
-
-    ```java
                 just to mimic a network connection.
-    ```
-
-    ```java
             val start = page * pageSize
-    ```
-
-    ```java
             return if (start + pageSize <=
-    ```
-
-    ```java
             ourDataSource.size) {
-    ```
-
-    ```java
                 Result.success(
-    ```
-
-    ```java
                     ourDataSource.slice(start until start
-    ```
-
-    ```java
                         + pageSize)
-    ```
-
-    ```java
                 )
-    ```
-
-    ```java
             } else Result.success(emptyList())
-    ```
-
-    ```java
         }
-    ```
-
-    ```java
     }
     ```
 
@@ -698,17 +350,8 @@ Paging 库为开发者提供了令人难以置信的功能，但有时您会遇�
 
     ```java
     interface StudentPaginator<Key, Student> {
-    ```
-
-    ```java
         suspend fun loadNextStudent()
-    ```
-
-    ```java
         fun reset()
-    ```
-
-    ```java
     }
     ```
 
@@ -716,37 +359,13 @@ Paging 库为开发者提供了令人难以置信的功能，但有时您会遇�
 
     ```java
     class StudentPaginatorImpl<Key, Student>(
-    ```
-
-    ```java
     ) : StudentPaginator<Key, Student> {
-    ```
-
-    ```java
         override suspend fun loadNextStudent() {
-    ```
-
-    ```java
             TODO("Not yet implemented")
-    ```
-
-    ```java
         }
-    ```
-
-    ```java
         override fun reset() {
-    ```
-
-    ```java
             TODO("Not yet implemented")
-    ```
-
-    ```java
         }
-    ```
-
-    ```java
     }
     ```
 
@@ -754,77 +373,23 @@ Paging 库为开发者提供了令人难以置信的功能，但有时您会遇�
 
     ```java
     class StudentPaginatorImpl<Key, Student>(
-    ```
-
-    ```java
         private val key: Key,
-    ```
-
-    ```java
         private inline val loadUpdated: (Boolean) -> Unit,
-    ```
-
-    ```java
         private inline val request: suspend (nextKey: Key)
-    ```
-
-    ```java
         ->
-    ```
-
-    ```java
     . . .
-    ```
-
-    ```java
     ) : StudentPaginator<Key, Student> {
-    ```
-
-    ```java
         private var currentKey = key
-    ```
-
-    ```java
         private var stateRequesting = false
-    ```
-
-    ```java
         override suspend fun loadNextStudent() {
-    ```
-
-    ```java
             if (stateRequesting) {
-    ```
-
-    ```java
                 return
-    ```
-
-    ```java
             }
-    ```
-
-    ```java
             stateRequesting = true
-    ```
-
-    ```java
          . . .
-    ```
-
-    ```java
         }
-    ```
-
-    ```java
         override fun reset() {
-    ```
-
-    ```java
             currentKey = key
-    ```
-
-    ```java
         }
     ```
 
@@ -832,33 +397,12 @@ Paging 库为开发者提供了令人难以置信的功能，但有时您会遇�
 
     ```java
     data class UIState(
-    ```
-
-    ```java
         val page: Int = 0,
-    ```
-
-    ```java
         val loading: Boolean = false,
-    ```
-
-    ```java
         val studentProfile: List<StudentProfile> =
-    ```
-
-    ```java
             emptyList(),
-    ```
-
-    ```java
         val error: String? = null,
-    ```
-
-    ```java
         val end: Boolean = false,
-    ```
-
-    ```java
     )
     ```
 
@@ -866,125 +410,35 @@ Paging 库为开发者提供了令人难以置信的功能，但有时您会遇�
 
     ```java
     class StudentViewModel() : ViewModel() {
-    ```
-
-    ```java
         var state by mutableStateOf(UIState())
-    ```
-
-    ```java
         private val studentRepository =
-    ```
-
-    ```java
             StudentRepository()
-    ```
-
-    ```java
         init {
-    ```
-
-    ```java
             loadStudentProfile()
-    ```
-
-    ```java
         }
-    ```
-
-    ```java
         private val ourPaginator = StudentPaginatorImpl(
-    ```
-
-    ```java
             key = state.page,
-    ```
-
-    ```java
             loadUpdated = { state = state.copy(loading =
-    ```
-
-    ```java
                 it) },
-    ```
-
-    ```java
             request = { studentRepository.getStudents(it,
-    ```
-
-    ```java
                 24) },
-    ```
-
-    ```java
             nextKey = { state.page + 1 },
-    ```
-
-    ```java
             error = { state = state.copy(error =
-    ```
-
-    ```java
                 it?.localizedMessage) },
-    ```
-
-    ```java
             success = { student, newKey ->
-    ```
-
-    ```java
                 state = state.copy(
-    ```
-
-    ```java
                     studentProfile = state.studentProfile
-    ```
-
-    ```java
                         + student,
-    ```
-
-    ```java
                     page = newKey,
-    ```
-
-    ```java
                     end = student.isEmpty()
-    ```
-
-    ```java
                 )
-    ```
-
-    ```java
             }
-    ```
-
-    ```java
         )
-    ```
-
-    ```java
         fun loadStudentProfile(){
-    ```
-
-    ```java
             viewModelScope.launch {
-    ```
-
-    ```java
                 ourPaginator.loadNextStudent()
-    ```
-
-    ```java
             }
-    ```
-
-    ```java
         }
-    ```
-
-    ```java
     }
     ```
 
@@ -1048,65 +502,20 @@ loadUpdated(false)
 
     ```java
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, NewsArticle> {
-    ```
-
-    ```java
         return try {
-    ```
-
-    ```java
             val page = params.key ?: 1
-    ```
-
-    ```java
             val response = newsApiService.getNews(page =
-    ```
-
-    ```java
                 page)
-    ```
-
-    ```java
             LoadResult.Page(
-    ```
-
-    ```java
                 data = response.articles,
-    ```
-
-    ```java
                 prevKey = if (page == 1) null else
-    ```
-
-    ```java
                     page.minus(1),
-    ```
-
-    ```java
                 nextKey = if (response.articles.isEmpty())
-    ```
-
-    ```java
                     null else page.plus(1),
-    ```
-
-    ```java
             )
-    ```
-
-    ```java
         } catch (e: Exception) {
-    ```
-
-    ```java
             LoadResult.Error(e)
-    ```
-
-    ```java
         }
-    ```
-
-    ```java
     }
     ```
 
@@ -1114,37 +523,13 @@ loadUpdated(false)
 
     ```java
     override fun getRefreshKey(state: PagingState<Int, NewsArticle>): Int? {
-    ```
-
-    ```java
         return state.anchorPosition?.let { anchorPosition
-    ```
-
-    ```java
             ->
-    ```
-
-    ```java
             state.closestPageToPosition(anchorPosition)?
-    ```
-
-    ```java
                 .prevKey?.plus(1)
-    ```
-
-    ```java
                 ?: state.closestPageToPosition(
-    ```
-
-    ```java
                     anchorPosition)?.nextKey?.minus(1)
-    ```
-
-    ```java
         }
-    ```
-
-    ```java
     }
     ```
 
@@ -1184,21 +569,9 @@ loadUpdated(false)
 
     ```java
     yourPager.flow
-    ```
-
-    ```java
         .map { PagingData ->
-    ```
-
-    ```java
             // here is where the transformations are
-    ```
-
-    ```java
                applied to the items in the paged data.
-    ```
-
-    ```java
     }
     ```
 
@@ -1206,21 +579,9 @@ loadUpdated(false)
 
     ```java
     yourPager.flow
-    ```
-
-    ```java
         .map { PagingData ->
-    ```
-
-    ```java
             PagingData.map { sports -> SportsModel(sports)
-    ```
-
-    ```java
             }
-    ```
-
-    ```java
     }
     ```
 
@@ -1228,21 +589,9 @@ loadUpdated(false)
 
     ```java
     yourPager.flow
-    ```
-
-    ```java
         .map { PagingData ->
-    ```
-
-    ```java
             PagingData.filter { sports ->
-    ```
-
-    ```java
                 !sports.displayInUi }
-    ```
-
-    ```java
     }
     ```
 
@@ -1282,29 +631,11 @@ loadUpdated(false)
 
     ```java
     override fun getRefreshKey(PagingState: PagingState): String? {
-    ```
-
-    ```java
         return PagingState.anchorPosition?.let { position
-    ```
-
-    ```java
             ->
-    ```
-
-    ```java
                 PagingState.getClosestItemToPosition(
-    ```
-
-    ```java
                     position)?.id
-    ```
-
-    ```java
         }
-    ```
-
-    ```java
     }
     ```
 
@@ -1312,13 +643,7 @@ loadUpdated(false)
 
     ```java
     override fun getRefreshKey(PagingState: PagingState): Int? {
-    ```
-
-    ```java
         return PagingState.anchorPosition
-    ```
-
-    ```java
     }
     ```
 
@@ -1328,25 +653,10 @@ loadUpdated(false)
 
     ```java
     val yourFlow = Pager(
-    ```
-
-    ```java
         PagingConfig(pageSize = 24)
-    ```
-
-    ```java
     ) {
-    ```
-
-    ```java
         YourPagingSource(yourBackend, yourQuery)
-    ```
-
-    ```java
     }.flow
-    ```
-
-    ```java
         .cachedIn(viewModelScope)
     ```
 
@@ -1376,17 +686,8 @@ loadUpdated(false)
 
     ```java
     testImplementation 'org.assertj:assertj-core:3.x.x'
-    ```
-
-    ```java
     testImplementation "org.mockito:mockito-core:3.x.x"
-    ```
-
-    ```java
     testImplementation 'Androidx.arch.core:core-testing:2.x.x'
-    ```
-
-    ```java
     testImplementation 'org.jetbrains.kotlinx:kotlinx-coroutines-test:1.x.x'
     ```
 
@@ -1398,13 +699,7 @@ loadUpdated(false)
 
     ```java
     @Mock
-    ```
-
-    ```java
     private lateinit var newsApiService: NewsApiService
-    ```
-
-    ```java
     lateinit var newsPagingSource: NewsArticlePagingSource
     ```
 
@@ -1412,25 +707,10 @@ loadUpdated(false)
 
     ```java
     @Before
-    ```
-
-    ```java
     fun setup() {
-    ```
-
-    ```java
         Dispatchers.setMain(testDispatcher)
-    ```
-
-    ```java
         newsPagingSource =
-    ```
-
-    ```java
             NewsArticlePagingSource(newsApiService)
-    ```
-
-    ```java
     }
     ```
 
@@ -1438,37 +718,13 @@ loadUpdated(false)
 
     ```java
     @Test
-    ```
-
-    ```java
     fun `news article Paging Source load failure http error`() = runBlockingTest {
-    ```
-
-    ```java
         //setup
-    ```
-
-    ```java
         val error = HttpException(
-    ```
-
-    ```java
             Response.error<ResponseBody>(
-    ```
-
-    ```java
                 403, "some content".toResponseBody(
-    ```
-
-    ```java
                     "plain/text".toMediaTypeOrNull())
-    ```
-
-    ```java
             )
-    ```
-
-    ```java
         ) . . .
     ```
 
@@ -1476,21 +732,9 @@ loadUpdated(false)
 
     ```java
     Mockito.doThrow(error)
-    ```
-
-    ```java
         .`when`(newsApiService)
-    ```
-
-    ```java
         .getNews(
-    ```
-
-    ```java
             1
-    ```
-
-    ```java
         ). . .
     ```
 
@@ -1498,41 +742,14 @@ loadUpdated(false)
 
     ```java
     //assert
-    ```
-
-    ```java
     assertEquals(
-    ```
-
-    ```java
         expectedResult, newsPagingSource.load(
-    ```
-
-    ```java
             PagingSource.LoadParams.Refresh(
-    ```
-
-    ```java
                 key = null,
-    ```
-
-    ```java
                 loadSize = 1,
-    ```
-
-    ```java
                 placeholdersEnabled = false
-    ```
-
-    ```java
             )
-    ```
-
-    ```java
         )
-    ```
-
-    ```java
     )
     ```
 
@@ -1540,17 +757,8 @@ loadUpdated(false)
 
     ```java
     @After
-    ```
-
-    ```java
     fun tearDown() {
-    ```
-
-    ```java
         testDispatcher.cleanupTestCoroutines()
-    ```
-
-    ```java
     }
     ```
 

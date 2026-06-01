@@ -113,10 +113,6 @@
             this.ready = ready; 
         } 
     } 
-
-    ```
-
-    ```kt
     public class Order implements Observer { 
         private Subject subject = null; 
 

@@ -171,9 +171,6 @@
             [self.advertiser start];
         }
     }
-    ```
-
-    ```swift
     pragma marks. Using pragma marks we can make our code much more readable and also provide logical grouping to our methods. It is a good programming practice to follow.
     ```
 

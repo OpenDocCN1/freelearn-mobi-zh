@@ -623,10 +623,6 @@ Flash Professional CS5.5 的用户会发现，他们可以通过 **AIR for Andro
     <s:layout>
     <s:VerticalLayout paddingBottom="20" paddingLeft="20" paddingRight="20" paddingTop="20"/>
     </s:layout>
-
-    ```
-
-    ```kt
     <s:Label text="Tab View: #2" />
     </s:View>
 

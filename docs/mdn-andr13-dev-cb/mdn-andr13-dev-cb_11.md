@@ -56,9 +56,6 @@ GUI 警告的主要好处之一是它们为用户提供即时反馈。例如，�
 
     ```java
     @Composable
-    ```
-
-    ```java
     fun OurMenu(){ }
     ```
 
@@ -66,21 +63,9 @@ GUI 警告的主要好处之一是它们为用户提供即时反馈。例如，�
 
     ```java
     @Composable
-    ```
-
-    ```java
     fun OurMenu(){
-    ```
-
-    ```java
     var expanded by remember { mutableStateOf(false) }
-    ```
-
-    ```java
     val menuItems = listOf("Item 1", "Item 2", "Item 3",
-    ```
-
-    ```java
     "Item 4") }
     ```
 
@@ -90,53 +75,17 @@ GUI 警告的主要好处之一是它们为用户提供即时反馈。例如，�
 
     ```java
     Box(
-    ```
-
-    ```java
         contentAlignment = Alignment.Center,
-    ```
-
-    ```java
         modifier = Modifier
-    ```
-
-    ```java
             .clickable { expanded = true }
-    ```
-
-    ```java
     ) {
-    ```
-
-    ```java
         Text(stringResource(id = R.string.menu))
-    ```
-
-    ```java
         Icon(
-    ```
-
-    ```java
             imageVector = Icons.Default.ArrowDropDown,
-    ```
-
-    ```java
             contentDescription = stringResource(
-    ```
-
-    ```java
                 id = R.string.menu_drop_down),
-    ```
-
-    ```java
             modifier = Modifier.align(Alignment.CenterEnd)
-    ```
-
-    ```java
         )
-    ```
-
-    ```java
     }
     ```
 
@@ -146,37 +95,13 @@ GUI 警告的主要好处之一是它们为用户提供即时反馈。例如，�
 
     ```java
     DropdownMenu(
-    ```
-
-    ```java
         expanded = expanded,
-    ```
-
-    ```java
         onDismissRequest = { expanded = false }
-    ```
-
-    ```java
     ) {
-    ```
-
-    ```java
         menuItems.forEachIndexed { index, item ->
-    ```
-
-    ```java
             DropdownMenuItem(text = { Text(item)},
-    ```
-
-    ```java
                 onClick = { /*TODO*/ })
-    ```
-
-    ```java
         }
-    ```
-
-    ```java
     }
     ```
 
@@ -230,33 +155,12 @@ GUI 警告的主要好处之一是它们为用户提供即时反馈。例如，�
 
     ```java
     val coroutineScope = rememberCoroutine()
-    ```
-
-    ```java
     coroutineScope.launch {
-    ```
-
-    ```java
         Toast.makeText(
-    ```
-
-    ```java
             context,
-    ```
-
-    ```java
             "Selected item: $item",
-    ```
-
-    ```java
             Toast.LENGTH_SHORT
-    ```
-
-    ```java
         ).show()
-    ```
-
-    ```java
     }
     ```
 
@@ -270,29 +174,11 @@ GUI 警告的主要好处之一是它们为用户提供即时反馈。例如，�
 
     ```java
     coroutineScope.launch {
-    ```
-
-    ```java
         Toast.makeText(
-    ```
-
-    ```java
             context,
-    ```
-
-    ```java
             "Selected item: $item",
-    ```
-
-    ```java
             Toast.LENGTH_SHORT
-    ```
-
-    ```java
         ).show()
-    ```
-
-    ```java
     }
     ```
 
@@ -373,9 +259,6 @@ Scaffold 在 Android 应用程序开发框架（如 Flutter 或 Jetpack Compose�
 
     ```java
     @Composable
-    ```
-
-    ```java
     fun AlertDialogExample() {...}
     ```
 
@@ -385,69 +268,21 @@ Scaffold 在 Android 应用程序开发框架（如 Flutter 或 Jetpack Compose�
 
     ```java
     AlertDialog(
-    ```
-
-    ```java
         onDismissRequest = { dialog.value = false },
-    ```
-
-    ```java
         title = {
-    ```
-
-    ```java
             Text(
-    ```
-
-    ```java
                 text = stringResource(
-    ```
-
-    ```java
                     id = R.string.title_message),
-    ```
-
-    ```java
                 fontWeight = FontWeight.Bold,
-    ```
-
-    ```java
                 color = Color.Black
-    ```
-
-    ```java
             )
-    ```
-
-    ```java
         },
-    ```
-
-    ```java
         text = {
-    ```
-
-    ```java
             Text(
-    ```
-
-    ```java
                 text = stringResource(id = R.string.body),
-    ```
-
-    ```java
                 color = Color.Gray
-    ```
-
-    ```java
             )
-    ```
-
-    ```java
         },
-    ```
-
-    ```java
         . . .
     ```
 
@@ -455,77 +290,23 @@ Scaffold 在 Android 应用程序开发框架（如 Flutter 或 Jetpack Compose�
 
     ```java
         confirmButton = {
-    ```
-
-    ```java
             Button(
-    ```
-
-    ```java
                 onClick = {/*TODO*/ }
-    ```
-
-    ```java
             ) {
-    ```
-
-    ```java
                 Text(text = stringResource(
-    ```
-
-    ```java
                     id = R.string.ok))
-    ```
-
-    ```java
             }
-    ```
-
-    ```java
         },
-    ```
-
-    ```java
         dismissButton = {
-    ```
-
-    ```java
             Button(
-    ```
-
-    ```java
                 onClick = { dialog.value = false }
-    ```
-
-    ```java
             ) {
-    ```
-
-    ```java
                 Text(text = stringResource(
-    ```
-
-    ```java
                     id = R.string.cancel))
-    ```
-
-    ```java
             }
-    ```
-
-    ```java
         },
-    ```
-
-    ```java
     )
-    ```
-
-    ```java
     }
-    ```
-
-    ```java
         . . .
     ```
 
@@ -569,9 +350,6 @@ Scaffold 在 Android 应用程序开发框架（如 Flutter 或 Jetpack Compose�
 
     ```java
     @Composable
-    ```
-
-    ```java
     fun BottomSheetExample() {...}
     ```
 
@@ -587,97 +365,28 @@ Scaffold 在 Android 应用程序开发框架（如 Flutter 或 Jetpack Compose�
 
     ```java
     ModalBottomSheet(
-    ```
-
-    ```java
         onDismissRequest = { openBottomSheet = false },
-    ```
-
-    ```java
         sheetState = bottomSheetState,
-    ```
-
-    ```java
     ) {
-    ```
-
-    ```java
         Column(Modifier.fillMaxWidth(),
-    ```
-
-    ```java
             horizontalAlignment =
-    ```
-
-    ```java
                 Alignment.CenterHorizontally) {
-    ```
-
-    ```java
             Button(
-    ```
-
-    ```java
                 onClick = {
-    ```
-
-    ```java
                     coroutineScope.launch {
-    ```
-
-    ```java
                         bottomSheetState.hide() }
-    ```
-
-    ```java
                            .invokeOnCompletion {
-    ```
-
-    ```java
                            if (
-    ```
-
-    ```java
                                !bottomSheetState.isVisible
-    ```
-
-    ```java
                            ) {
-    ```
-
-    ```java
                                openBottomSheet = false
-    ```
-
-    ```java
                            }
-    ```
-
-    ```java
                     }
-    ```
-
-    ```java
                 }
-    ```
-
-    ```java
             ) {
-    ```
-
-    ```java
                 Text(text = stringResource(
-    ```
-
-    ```java
                     id = R.string.content))
-    ```
-
-    ```java
         }
-    ```
-
-    ```java
     . . .
     ```
 
@@ -721,9 +430,6 @@ Scaffold 在 Android 应用程序开发框架（如 Flutter 或 Jetpack Compose�
 
     ```java
     @Composable
-    ```
-
-    ```java
     fun RadioButtonExample() {...}
     ```
 
@@ -731,13 +437,7 @@ Scaffold 在 Android 应用程序开发框架（如 Flutter 或 Jetpack Compose�
 
     ```java
     val choices = listOf("Mangoes", "Avocado", "Oranges")
-    ```
-
-    ```java
     var selectedOption by remember {
-    ```
-
-    ```java
         mutableStateOf(choices[0]) }
     ```
 
@@ -745,57 +445,18 @@ Scaffold 在 Android 应用程序开发框架（如 Flutter 或 Jetpack Compose�
 
     ```java
     Row(
-    ```
-
-    ```java
         Modifier.fillMaxWidth(),
-    ```
-
-    ```java
         verticalAlignment = Alignment.CenterVertically
-    ```
-
-    ```java
     ) {
-    ```
-
-    ```java
         RadioButton(
-    ```
-
-    ```java
             selected = selectedOption == option,
-    ```
-
-    ```java
             onClick = { selectedOption = option }
-    ```
-
-    ```java
         )
-    ```
-
-    ```java
         Text(
-    ```
-
-    ```java
             text = option,
-    ```
-
-    ```java
             style = MaterialTheme.typography.body1,
-    ```
-
-    ```java
             modifier = Modifier.padding(start = 6.dp)
-    ```
-
-    ```java
         )
-    ```
-
-    ```java
     }
     ```
 
@@ -833,9 +494,6 @@ Scaffold 在 Android 应用程序开发框架（如 Flutter 或 Jetpack Compose�
 
     ```java
     @Composable
-    ```
-
-    ```java
     fun RadioButtonExample() {...}
     ```
 
@@ -845,17 +503,8 @@ Scaffold 在 Android 应用程序开发框架（如 Flutter 或 Jetpack Compose�
 
     ```java
     FloatingActionButton(onClick = { /* do something */ }) {
-    ```
-
-    ```java
         Icon(Icons.Default.Add, contentDescription =
-    ```
-
-    ```java
             stringResource(id = R.string.add))
-    ```
-
-    ```java
     }
     ```
 
@@ -865,45 +514,15 @@ Scaffold 在 Android 应用程序开发框架（如 Flutter 或 Jetpack Compose�
 
     ```java
     ExtendedFloatingActionButton(
-    ```
-
-    ```java
         text = { Text("Add item") },
-    ```
-
-    ```java
         onClick = { /* do something */ },
-    ```
-
-    ```java
         icon = {
-    ```
-
-    ```java
             Icon(
-    ```
-
-    ```java
                 Icons.Default.Add,
-    ```
-
-    ```java
                 contentDescription = stringResource(
-    ```
-
-    ```java
                     id = R.string.add)
-    ```
-
-    ```java
             )
-    ```
-
-    ```java
         }
-    ```
-
-    ```java
     )
     ```
 

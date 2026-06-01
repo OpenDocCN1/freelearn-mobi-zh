@@ -40,13 +40,7 @@ DataStore 是 Android 应用程序的数据存储解决方案，它允许您使�
 
     ```java
     dependencies {
-    ```
-
-    ```java
     implementation "androidx.DataStore:DataStore-preferences:1.x.x"
-    ```
-
-    ```java
     }
     ```
 
@@ -56,21 +50,9 @@ DataStore 是 Android 应用程序的数据存储解决方案，它允许您使�
 
     ```java
     data class Tasks(
-    ```
-
-    ```java
         val firstTask: String,
-    ```
-
-    ```java
         val secondTask: String,
-    ```
-
-    ```java
         val thirdTask: String
-    ```
-
-    ```java
     )
     ```
 
@@ -78,13 +60,7 @@ DataStore 是 Android 应用程序的数据存储解决方案，它允许您使�
 
     ```java
     enum class TaskDataSource {
-    ```
-
-    ```java
         PREFERENCES_DATA_STORE
-    ```
-
-    ```java
     }
     ```
 
@@ -103,33 +79,12 @@ interface DataStoreManager {
 
     ```java
     class DataStoreManagerImpl(): DataStoreManager {
-    ```
-
-    ```java
         override suspend fun saveTasks(tasks: Tasks) {
-    ```
-
-    ```java
             TODO("Not yet implemented")
-    ```
-
-    ```java
         }
-    ```
-
-    ```java
         override fun getTasks(): Flow<Tasks> {
-    ```
-
-    ```java
             TODO("Not yet implemented")
-    ```
-
-    ```java
         }
-    ```
-
-    ```java
     }
     ```
 
@@ -137,101 +92,29 @@ interface DataStoreManager {
 
     ```java
     class DataStoreManagerImpl(
-    ```
-
-    ```java
         private val tasksPreferenceStore:
-    ```
-
-    ```java
             DataStore<Preferences>
-    ```
-
-    ```java
     ) : DataStoreManager {
-    ```
-
-    ```java
         private val FIRST_TASK =
-    ```
-
-    ```java
             stringPreferencesKey("first_task")
-    ```
-
-    ```java
         private val SECOND_TASK =
-    ```
-
-    ```java
             stringPreferencesKey("second_task")
-    ```
-
-    ```java
         private val THIRD_TASK =
-    ```
-
-    ```java
             stringPreferencesKey("third_task")
-    ```
-
-    ```java
         override suspend fun saveTasks(tasks: Tasks) {
-    ```
-
-    ```java
             tasksPreferenceStore.edit {
-    ```
-
-    ```java
             taskPreferenceStore ->
-    ```
-
-    ```java
                 taskPreferenceStore[FIRST_TASK] =
-    ```
-
-    ```java
                     tasks.firstTask
-    ```
-
-    ```java
                 taskPreferenceStore[SECOND_TASK] =
-    ```
-
-    ```java
                     tasks.secondTask
-    ```
-
-    ```java
                 taskPreferenceStore[THIRD_TASK] =
-    ```
-
-    ```java
                     tasks.thirdTask
-    ```
-
-    ```java
             }
-    ```
-
-    ```java
         }
-    ```
-
-    ```java
         override fun getTasks(): Flow<Tasks> {
-    ```
-
-    ```java
             TODO("Not yet implemented")
-    ```
-
-    ```java
         }
-    ```
-
-    ```java
     }
     ```
 
@@ -239,33 +122,12 @@ interface DataStoreManager {
 
     ```java
     override fun getTasks(): Flow<Tasks> = tasksPreferenceStore.data.map { taskPreference ->
-    ```
-
-    ```java
         Tasks(
-    ```
-
-    ```java
             firstTask = taskPreference[FIRST_TASK] ?: "",
-    ```
-
-    ```java
             secondTask = taskPreference[SECOND_TASK] ?:
-    ```
-
-    ```java
             "",
-    ```
-
-    ```java
             thirdTask = taskPreference[THIRD_TASK] ?: ""
-    ```
-
-    ```java
         )
-    ```
-
-    ```java
     }
     ```
 
@@ -319,29 +181,11 @@ private val THIRD_TASK = stringPreferencesKey("third_task")
 
     ```java
     @HiltAndroidApp
-    ```
-
-    ```java
     class TaskApp : Application()
-    ```
-
-    ```java
     <application
-    ```
-
-    ```java
         android:allowBackup="true"
-    ```
-
-    ```java
         android:name=".TaskApp"
-    ```
-
-    ```java
         tools:targetApi="31">
-    ```
-
-    ```java
     ...
     ```
 
@@ -349,17 +193,8 @@ private val THIRD_TASK = stringPreferencesKey("third_task")
 
     ```java
     class DataStoreManagerImpl @Inject constructor(
-    ```
-
-    ```java
         private val tasksPreferenceStore:
-    ```
-
-    ```java
         DataStore<Preferences>
-    ```
-
-    ```java
     ) : DataStoreManager {
     ```
 
@@ -367,53 +202,17 @@ private val THIRD_TASK = stringPreferencesKey("third_task")
 
     ```java
     @Module
-    ```
-
-    ```java
     @InstallIn(SingletonComponent::class)
-    ```
-
-    ```java
     class DataStoreModule {
-    ```
-
-    ```java
         private val Context.tasksPreferenceStore :
-    ```
-
-    ```java
         DataStore<Preferences> by
-    ```
-
-    ```java
         preferencesDataStore(name = "store_tasks")
-    ```
-
-    ```java
         @Singleton
-    ```
-
-    ```java
         @Provides
-    ```
-
-    ```java
         fun provideTasksPreferenceDataStore(
-    ```
-
-    ```java
             @ApplicationContext context: Context
-    ```
-
-    ```java
         ): DataStore<Preferences> =
-    ```
-
-    ```java
            context.tasksPreferenceStore
-    ```
-
-    ```java
     }
     ```
 
@@ -421,37 +220,13 @@ private val THIRD_TASK = stringPreferencesKey("third_task")
 
     ```java
     @Module
-    ```
-
-    ```java
     @InstallIn(SingletonComponent::class)
-    ```
-
-    ```java
     abstract class DataStoreManagerModule {
-    ```
-
-    ```java
         @Singleton
-    ```
-
-    ```java
         @Binds
-    ```
-
-    ```java
         abstract fun
-    ```
-
-    ```java
             bindDataStoreRepository(DataStoreManagerImpl:
-    ```
-
-    ```java
                 DataStoreManagerImpl): DataStoreManager
-    ```
-
-    ```java
     }
     ```
 
@@ -459,53 +234,17 @@ private val THIRD_TASK = stringPreferencesKey("third_task")
 
     ```java
     interface TaskService {
-    ```
-
-    ```java
         fun getTasksFromPrefDataStore(): Flow<Tasks>
-    ```
-
-    ```java
         suspend fun addTasks(tasks: Tasks)
-    ```
-
-    ```java
     }
-    ```
-
-    ```java
     class TaskServiceImpl @Inject constructor(
-    ```
-
-    ```java
         private val DataStoreManager: DataStoreManager
-    ```
-
-    ```java
     ) : TaskService {
-    ```
-
-    ```java
         override fun getTasksFromPrefDataStore() =
-    ```
-
-    ```java
                  DataStoreManager.getTasks()
-    ```
-
-    ```java
         override suspend fun addTasks(tasks: Tasks) {
-    ```
-
-    ```java
             DataStoreManager.saveTasks(tasks)
-    ```
-
-    ```java
         }
-    ```
-
-    ```java
     }
     ```
 
@@ -513,21 +252,9 @@ private val THIRD_TASK = stringPreferencesKey("third_task")
 
     ```java
         @Singleton
-    ```
-
-    ```java
         @Binds
-    ```
-
-    ```java
         abstract fun bindTaskService(taskServiceImpl:
-    ```
-
-    ```java
         TaskServiceImpl): TaskService
-    ```
-
-    ```java
     }
     ```
 
@@ -535,29 +262,11 @@ private val THIRD_TASK = stringPreferencesKey("third_task")
 
     ```java
     fun saveTaskData(tasks: Tasks) {
-    ```
-
-    ```java
         viewModelScope.launch {
-    ```
-
-    ```java
             Log.d("Task", "asdf Data was inserted
-    ```
-
-    ```java
                    correctly")
-    ```
-
-    ```java
             taskService.addTasks(tasks)
-    ```
-
-    ```java
         }
-    ```
-
-    ```java
     }
     ```
 
@@ -565,33 +274,12 @@ private val THIRD_TASK = stringPreferencesKey("third_task")
 
     ```java
     TaskButton(onClick = {
-    ```
-
-    ```java
         val tasks = Tasks(
-    ```
-
-    ```java
             firstTask = firstText.value,
-    ```
-
-    ```java
             secondTask = secondText.value,
-    ```
-
-    ```java
             thirdTask = thirdText.value
-    ```
-
-    ```java
         )
-    ```
-
-    ```java
         taskViewModel.saveTaskData(tasks)},
-    ```
-
-    ```java
         text = stringResource(id = R.string.save))
     ```
 
@@ -655,9 +343,6 @@ Proto DataStore 与 Preferences DataStore 类似，但与 Preferences DataStore 
 
     ```java
     implementation "androidx.DataStore:DataStore:1.x.x
-    ```
-
-    ```java
     implementation "com.google.protobuf:protobuf-javalite:3.x.x"
     ```
 
@@ -665,17 +350,8 @@ Proto DataStore 与 Preferences DataStore 类似，但与 Preferences DataStore 
 
     ```java
     plugins {
-    ```
-
-    ```java
     ...
-    ```
-
-    ```java
         id "com.google.protobuf" version "0.8.12"
-    ```
-
-    ```java
     }
     ```
 
@@ -683,57 +359,18 @@ Proto DataStore 与 Preferences DataStore 类似，但与 Preferences DataStore 
 
     ```java
     protobuf {
-    ```
-
-    ```java
         protoc {
-    ```
-
-    ```java
             artifact = "com.google.protobuf:protoc:3.11.0"
-    ```
-
-    ```java
         }
-    ```
-
-    ```java
         generateProtoTasks {
-    ```
-
-    ```java
             all().each { task ->
-    ```
-
-    ```java
                 task.builtins {
-    ```
-
-    ```java
                      java {
-    ```
-
-    ```java
                          option 'lite'
-    ```
-
-    ```java
                      }
-    ```
-
-    ```java
                 }
-    ```
-
-    ```java
             }
-    ```
-
-    ```java
         }
-    ```
-
-    ```java
     }
     ```
 
@@ -741,37 +378,13 @@ Proto DataStore 与 Preferences DataStore 类似，但与 Preferences DataStore 
 
     ```java
     syntax = "proto3";
-    ```
-
-    ```java
     option java_package =
-    ```
-
-    ```java
         "com.madonasyombua.DataStoreexample";
-    ```
-
-    ```java
     option java_multiple_files = true;
-    ```
-
-    ```java
     message TaskPreference {
-    ```
-
-    ```java
         string first_task = 1;
-    ```
-
-    ```java
         string second_task = 2;
-    ```
-
-    ```java
         string third_task = 3;
-    ```
-
-    ```java
     }
     ```
 
@@ -781,17 +394,8 @@ Proto DataStore 与 Preferences DataStore 类似，但与 Preferences DataStore 
 
     ```java
     enum class TaskDataSource {
-    ```
-
-    ```java
         PREFERENCES_DATA_STORE,
-    ```
-
-    ```java
         PROTO_DATA_STORE
-    ```
-
-    ```java
     }
     ```
 
@@ -799,25 +403,10 @@ Proto DataStore 与 Preferences DataStore 类似，但与 Preferences DataStore 
 
     ```java
     interface DataStoreManager {
-    ```
-
-    ```java
         suspend fun saveTasks(tasks: Tasks)
-    ```
-
-    ```java
         fun getTasks(): Flow<Tasks>
-    ```
-
-    ```java
         suspend fun saveTasksToProtoStore(tasks: Tasks)
-    ```
-
-    ```java
         fun getTasksFromProtoStore(): Flow<Tasks>
-    ```
-
-    ```java
     }
     ```
 
@@ -825,25 +414,10 @@ Proto DataStore 与 Preferences DataStore 类似，但与 Preferences DataStore 
 
     ```java
     override suspend fun saveTasksToProtoStore(tasks: Tasks) {
-    ```
-
-    ```java
         TODO("Not yet implemented")
-    ```
-
-    ```java
     }
-    ```
-
-    ```java
     override fun getTasksFromProtoStore(): Flow<Tasks> {
-    ```
-
-    ```java
         TODO("Not yet implemented")
-    ```
-
-    ```java
     }
     ```
 
@@ -851,65 +425,20 @@ Proto DataStore 与 Preferences DataStore 类似，但与 Preferences DataStore 
 
     ```java
     object TaskSerializer : Serializer<TaskPreference> {
-    ```
-
-    ```java
         override val defaultValue: TaskPreference =
-    ```
-
-    ```java
             TaskPreference.getDefaultInstance()
-    ```
-
-    ```java
         override suspend fun readFrom(input: InputStream):
-    ```
-
-    ```java
             TaskPreference{
-    ```
-
-    ```java
                 try {
-    ```
-
-    ```java
                     return TaskPreference.parseFrom(input)
-    ```
-
-    ```java
                 } catch (exception:
-    ```
-
-    ```java
                 InvalidProtocolBufferException) {
-    ```
-
-    ```java
                   throw CorruptionException("Cannot read
-    ```
-
-    ```java
                   proto.", exception)
-    ```
-
-    ```java
                 }
-    ```
-
-    ```java
         }
-    ```
-
-    ```java
         override suspend fun writeTo(t: TaskPreference,
-    ```
-
-    ```java
             output: OutputStream) = t.writeTo(output)
-    ```
-
-    ```java
     }
     ```
 
@@ -923,37 +452,13 @@ Proto DataStore 与 Preferences DataStore 类似，但与 Preferences DataStore 
 
     ```java
     private val Context.taskProtoDataStore: DataStore<TaskPreference> by DataStore(
-    ```
-
-    ```java
         fileName = "task.pd",
-    ```
-
-    ```java
         serializer = TaskSerializer
-    ```
-
-    ```java
     )
-    ```
-
-    ```java
     @Singleton
-    ```
-
-    ```java
     @Provides
-    ```
-
-    ```java
     fun provideTasksProtoDataStore(
-    ```
-
-    ```java
         @ApplicationContext context: Context
-    ```
-
-    ```java
     ):DataStore<TaskPreference> = context.taskProtoDataStore
     ```
 
@@ -961,65 +466,20 @@ Proto DataStore 与 Preferences DataStore 类似，但与 Preferences DataStore 
 
     ```java
     override suspend fun saveTasksToProtoStore(tasks: Tasks) {
-    ```
-
-    ```java
         taskProtoDataStore.updateData { taskData ->
-    ```
-
-    ```java
             taskData.toBuilder()
-    ```
-
-    ```java
                 .setFirstTask(tasks.firstTask)
-    ```
-
-    ```java
                 .setSecondTask(tasks.secondTask)
-    ```
-
-    ```java
                 .setThirdTask(tasks.thirdTask)
-    ```
-
-    ```java
                 .build()
-    ```
-
-    ```java
         }
-    ```
-
-    ```java
     }
-    ```
-
-    ```java
     override fun getTasksFromProtoStore(): Flow<Tasks> =
-    ```
-
-    ```java
         taskProtoDataStore.data.map { tasks ->
-    ```
-
-    ```java
             Tasks(
-    ```
-
-    ```java
                 tasks.firstTask,
-    ```
-
-    ```java
                 tasks.secondTask,
-    ```
-
-    ```java
                 tasks.thirdTask
-    ```
-
-    ```java
             )
     ```
 
@@ -1027,25 +487,10 @@ Proto DataStore 与 Preferences DataStore 类似，但与 Preferences DataStore 
 
     ```java
     interface TaskService {
-    ```
-
-    ```java
         fun getTasksFromPrefDataStore() : Flow<Tasks>
-    ```
-
-    ```java
         suspend fun addTasks(tasks: Tasks)
-    ```
-
-    ```java
         fun getTasks(): Flow<Tasks>
-    ```
-
-    ```java
         fun getTasksFromProtoDataStore(): Flow<Tasks>
-    ```
-
-    ```java
     }
     ```
 
@@ -1053,61 +498,19 @@ Proto DataStore 与 Preferences DataStore 类似，但与 Preferences DataStore 
 
     ```java
     class TaskServiceImpl @Inject constructor(
-    ```
-
-    ```java
         private val DataStoreManager: DataStoreManager
-    ```
-
-    ```java
     ) : TaskService {
-    ```
-
-    ```java
         override fun getTasksFromPrefDataStore() =
-    ```
-
-    ```java
             DataStoreManager.getTasks()
-    ```
-
-    ```java
         override suspend fun addTasks(tasks: Tasks) {
-    ```
-
-    ```java
             DataStoreManager.saveTasks(tasks)
-    ```
-
-    ```java
             DataStoreManager.saveTasksToProtoStore(tasks)
-    ```
-
-    ```java
         }
-    ```
-
-    ```java
         override fun getTasks(): Flow<Tasks> =
-    ```
-
-    ```java
             getTasksFromProtoDataStore()
-    ```
-
-    ```java
         override fun getTasksFromProtoDataStore():
-    ```
-
-    ```java
             Flow<Tasks> =
-    ```
-
-    ```java
             DataStoreManager.getTasksFromProtoStore()
-    ```
-
-    ```java
     }
     ```
 
@@ -1153,29 +556,11 @@ Android 中的协议缓冲区是一种语言和平台无关的可扩展机制，
 
     ```java
     /* Copyright 2022 Google LLC.
-    ```
-
-    ```java
        SPDX-License-Identifier: Apache-2.0 */
-    ```
-
-    ```java
     public interface DataMigration<T> {
-    ```
-
-    ```java
         public suspend fun shouldMigrate(currentData: T): Boolean
-    ```
-
-    ```java
         public suspend fun migrate(currentData: T): T
-    ```
-
-    ```java
             public suspend fun cleanUp()
-    ```
-
-    ```java
     }
     ```
 
@@ -1183,13 +568,7 @@ Android 中的协议缓冲区是一种语言和平台无关的可扩展机制，
 
     ```java
     private val Context.migrateOnePreferencesDataStore : DataStore<Preferences> by preferencesDataStore(
-    ```
-
-    ```java
         name = "store_tasks"
-    ```
-
-    ```java
     )
     ```
 
@@ -1197,101 +576,29 @@ Android 中的协议缓冲区是一种语言和平台无关的可扩展机制，
 
     ```java
     private val Context.migrationTwoPreferencesDataStore by preferencesDataStore(
-    ```
-
-    ```java
         name = NEW_DataStore,
-    ```
-
-    ```java
         produceMigrations = { context ->
-    ```
-
-    ```java
             listOf(object : DataMigration<Preferences> {
-    ```
-
-    ```java
                 override suspend fun
-    ```
-
-    ```java
                     shouldMigrate(currentData:
-    ```
-
-    ```java
                         Preferences) = true
-    ```
-
-    ```java
                 override suspend fun migrate(currentData:
-    ```
-
-    ```java
                 Preferences): Preferences {
-    ```
-
-    ```java
                     val oldData = context
-    ```
-
-    ```java
                         .migrateOnePreferencesDataStore
-    ```
-
-    ```java
                             .data.first().asMap()
-    ```
-
-    ```java
                     val currentMutablePrefs =
-    ```
-
-    ```java
                         currentData.toMutablePreferences()
-    ```
-
-    ```java
                     oldToNew(oldData, currentMutablePrefs)
-    ```
-
-    ```java
                     return
-    ```
-
-    ```java
                        currentMutablePrefs.toPreferences()
-    ```
-
-    ```java
                 }
-    ```
-
-    ```java
                 override suspend fun cleanUp() {
-    ```
-
-    ```java
                     context.migrateOnePreferencesDataStore
-    ```
-
-    ```java
                         .edit { it.clear() }
-    ```
-
-    ```java
                 }
-    ```
-
-    ```java
             })
-    ```
-
-    ```java
         }
-    ```
-
-    ```java
     )
     ```
 
@@ -1299,45 +606,15 @@ Android 中的协议缓冲区是一种语言和平台无关的可扩展机制，
 
     ```java
     private fun oldToNew(
-    ```
-
-    ```java
         oldData: Map<Preferences.Key<*>, Any>,
-    ```
-
-    ```java
         currentMutablePrefs: MutablePreferences
-    ```
-
-    ```java
     ) {
-    ```
-
-    ```java
         oldData.forEach { (key, value) ->
-    ```
-
-    ```java
             when (value) {
-    ```
-
-    ```java
                 //migrate data types you wish to migrate
-    ```
-
-    ```java
                 ...
-    ```
-
-    ```java
             }
-    ```
-
-    ```java
         }
-    ```
-
-    ```java
     }
     ```
 
@@ -1374,13 +651,7 @@ Android 中的协议缓冲区是一种语言和平台无关的可扩展机制，
 
     ```java
     testImplementation "io.mockk:mockk:1.13.3"
-    ```
-
-    ```java
     androidTestImplementation "io.mockk:mockk-android:1.13.3"
-    ```
-
-    ```java
     testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.5.2"
     ```
 
@@ -1388,29 +659,11 @@ Android 中的协议缓冲区是一种语言和平台无关的可扩展机制，
 
     ```java
     private lateinit var classToTest: TaskViewModel
-    ```
-
-    ```java
     private val mockTaskService = mockk<TaskService>()
-    ```
-
-    ```java
     private val dispatcher = TestCoroutineDispatcher()
-    ```
-
-    ```java
     @Before
-    ```
-
-    ```java
     fun setUp(){
-    ```
-
-    ```java
         classToTest = TaskViewModel(mockTaskService)
-    ```
-
-    ```java
     }
     ```
 
@@ -1418,37 +671,13 @@ Android 中的协议缓冲区是一种语言和平台无关的可扩展机制，
 
     ```java
     @Before
-    ```
-
-    ```java
     fun setUp(){
-    ```
-
-    ```java
         classToTest = TaskViewModel(mockTaskService)
-    ```
-
-    ```java
         Dispatchers.setMain(dispatcher)
-    ```
-
-    ```java
     }
-    ```
-
-    ```java
     @After
-    ```
-
-    ```java
     fun tearDown() {
-    ```
-
-    ```java
         Dispatchers.resetMain()
-    ```
-
-    ```java
     }
     ```
 
@@ -1456,41 +685,14 @@ Android 中的协议缓冲区是一种语言和平台无关的可扩展机制，
 
     ```java
     @Test
-    ```
-
-    ```java
     fun  `Verify add tasks function adds tasks as needed`() = runBlocking {
-    ```
-
-    ```java
         val fakeTasks = Tasks(
-    ```
-
-    ```java
             firstTask = "finish school work",
-    ```
-
-    ```java
             secondTask = "buy gifts for the holiday",
-    ```
-
-    ```java
             thirdTask = "finish work"
-    ```
-
-    ```java
         )
-    ```
-
-    ```java
         val expected = classToTest.saveTaskData(fakeTasks)
-    ```
-
-    ```java
         Assert.assertNotNull(expected)
-    ```
-
-    ```java
     }
     ```
 

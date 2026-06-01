@@ -56,93 +56,27 @@ Jetpack 导航简化了屏幕之间的导航，在本章中，我们将学习如
 
     ```java
     sealed class Destination(val route: String, val icon: Int, val title: String) {
-    ```
-
-    ```java
         object Transaction : Destination(
-    ```
-
-    ```java
             route = "transactions", icon =
-    ```
-
-    ```java
                 R.drawable.ic_baseline_wallet,
-    ```
-
-    ```java
                 title = "Transactions"
-    ```
-
-    ```java
         )
-    ```
-
-    ```java
         object Budgets : Destination(
-    ```
-
-    ```java
             route = "budget", icon =
-    ```
-
-    ```java
                 R.drawable.ic_baseline_budget,
-    ```
-
-    ```java
                 title = "Budget"
-    ```
-
-    ```java
         )
-    ```
-
-    ```java
         object Tasks : Destination(route = "tasks", icon =
-    ```
-
-    ```java
             R.drawable.ic_add_task, title = "Tasks")
-    ```
-
-    ```java
         object Settings : Destination(
-    ```
-
-    ```java
             route = "settings", icon =
-    ```
-
-    ```java
                 R.drawable.ic_settings,
-    ```
-
-    ```java
                 title = "Settings"
-    ```
-
-    ```java
         )
-    ```
-
-    ```java
         companion object {
-    ```
-
-    ```java
             val toList = listOf(Transaction, Budgets,
-    ```
-
-    ```java
             Tasks, Settings)
-    ```
-
-    ```java
         }
-    ```
-
-    ```java
     }
     ```
 
@@ -162,41 +96,14 @@ Jetpack 导航简化了屏幕之间的导航，在本章中，我们将学习如
 
     ```java
     @Composable
-    ```
-
-    ```java
     fun Transaction(){
-    ```
-
-    ```java
         Column(
-    ```
-
-    ```java
             modifier = Modifier
-    ```
-
-    ```java
                 .fillMaxSize()
-    ```
-
-    ```java
                 .wrapContentSize(Alignment.Center)
-    ```
-
-    ```java
         ) {
-    ```
-
-    ```java
         ...
-    ```
-
-    ```java
         }
-    ```
-
-    ```java
     }
     ```
 
@@ -206,41 +113,14 @@ Jetpack 导航简化了屏幕之间的导航，在本章中，我们将学习如
 
     ```java
     @Composable
-    ```
-
-    ```java
     fun BottomNavigationBar(navController: NavController, appItems: List<Destination>) {
-    ```
-
-    ```java
         BottomNavigation(
-    ```
-
-    ```java
             backgroundColor = colorResource(id =
-    ```
-
-    ```java
                 R.color.purple_700),
-    ```
-
-    ```java
                 contentColor = Color.White
-    ```
-
-    ```java
         ) {
-    ```
-
-    ```java
         ...
-    ```
-
-    ```java
         }
-    ```
-
-    ```java
     }
     ```
 
@@ -248,73 +128,22 @@ Jetpack 导航简化了屏幕之间的导航，在本章中，我们将学习如
 
     ```java
     @Composable
-    ```
-
-    ```java
     fun AppNavigation(navController: NavHostController) {
-    ```
-
-    ```java
         NavHost(navController, startDestination =
-    ```
-
-    ```java
         Destination.Transaction.route) {
-    ```
-
-    ```java
             composable(Destination.Transaction.route) {
-    ```
-
-    ```java
                 Transaction()
-    ```
-
-    ```java
             }
-    ```
-
-    ```java
             composable(Destination.Budgets.route) {
-    ```
-
-    ```java
                 Budget()
-    ```
-
-    ```java
             }
-    ```
-
-    ```java
             composable(Destination.Tasks.route) {
-    ```
-
-    ```java
                 Tasks()
-    ```
-
-    ```java
             }
-    ```
-
-    ```java
             composable(Destination.Settings.route) {
-    ```
-
-    ```java
                 Settings()
-    ```
-
-    ```java
             }
-    ```
-
-    ```java
         }
-    ```
-
-    ```java
     }
     ```
 
@@ -322,69 +151,21 @@ Jetpack 导航简化了屏幕之间的导航，在本章中，我们将学习如
 
     ```java
     @Composable
-    ```
-
-    ```java
     fun AppScreen() {
-    ```
-
-    ```java
         val navController = rememberNavController()
-    ```
-
-    ```java
         Scaffold(
-    ```
-
-    ```java
             bottomBar = {
-    ```
-
-    ```java
                 BottomNavigationBar(navController =
-    ```
-
-    ```java
                 navController, appItems =
-    ```
-
-    ```java
                 Destination.toList) },
-    ```
-
-    ```java
             content = { padding ->
-    ```
-
-    ```java
                 Box(modifier = Modifier.padding(padding))
-    ```
-
-    ```java
                 {
-    ```
-
-    ```java
                     AppNavigation(navController =
-    ```
-
-    ```java
                         navController)
-    ```
-
-    ```java
                 }
-    ```
-
-    ```java
             }
-    ```
-
-    ```java
         )
-    ```
-
-    ```java
     }
     ```
 
@@ -472,25 +253,10 @@ val navController = rememberNavController()
 
     ```java
     sealed class Destination (val route: String){
-    ```
-
-    ```java
         object Main: Destination("main_route")
-    ```
-
-    ```java
         object LoginScreen: Destination("login_screen")
-    ```
-
-    ```java
         object RegisterScreen:
-    ```
-
-    ```java
             Destination("register_screen")
-    ```
-
-    ```java
     }
     ```
 
@@ -498,61 +264,19 @@ val navController = rememberNavController()
 
     ```java
     @Composable
-    ```
-
-    ```java
     fun LoginContent(
-    ```
-
-    ```java
         ...
-    ```
-
-    ```java
         onRegister: () -> Unit
-    ```
-
-    ```java
     ) {
-    ```
-
-    ```java
     ClickableText(
-    ```
-
-    ```java
         modifier = Modifier.padding(top = 12.dp),
-    ```
-
-    ```java
         text = AnnotatedString(stringResource(id =
-    ```
-
-    ```java
             R.string.register)),
-    ```
-
-    ```java
         onClick = { onRegister.invoke() },
-    ```
-
-    ```java
         style = TextStyle(
-    ```
-
-    ```java
            colorResource(id = R.color.purple_700),
-    ```
-
-    ```java
            fontSize = 16.sp
-    ```
-
-    ```java
         )
-    ```
-
-    ```java
     )
     ```
 
@@ -566,33 +290,12 @@ val navController = rememberNavController()
 
     ```java
     @Composable
-    ```
-
-    ```java
     fun PasswordInputField(
-    ```
-
-    ```java
         text: String
-    ```
-
-    ```java
     ) {
-    ```
-
-    ```java
         OutlinedTextField(
-    ```
-
-    ```java
             label = { Text(text = text) },
-    ```
-
-    ```java
     ...
-    ```
-
-    ```java
     }
     ```
 
@@ -600,73 +303,22 @@ val navController = rememberNavController()
 
     ```java
     @Composable
-    ```
-
-    ```java
     fun Navigation(navController: NavHostController) {
-    ```
-
-    ```java
         NavHost(navController, startDestination =
-    ```
-
-    ```java
         Destination.LoginScreen.route) {
-    ```
-
-    ```java
             composable(Destination.LoginScreen.route) {
-    ```
-
-    ```java
                 LoginContentScreen(loginViewModel =
-    ```
-
-    ```java
                     hiltViewModel(),
-    ```
-
-    ```java
                 onRegisterNavigateTo = {
-    ```
-
-    ```java
                     navController.navigate(
-    ```
-
-    ```java
                         Destination.RegisterScreen.route)
-    ```
-
-    ```java
                 })
-    ```
-
-    ```java
             }
-    ```
-
-    ```java
             composable(Destination.RegisterScreen.route) {
-    ```
-
-    ```java
                 RegisterContentScreen(registerViewModel =
-    ```
-
-    ```java
                     hiltViewModel())
-    ```
-
-    ```java
             }
-    ```
-
-    ```java
         }
-    ```
-
-    ```java
     }
     ```
 
@@ -674,25 +326,10 @@ val navController = rememberNavController()
 
     ```java
     PasswordInputField(
-    ```
-
-    ```java
         text = stringResource(id = R.string.password),
-    ```
-
-    ```java
         authState = uiState,
-    ```
-
-    ```java
         onValueChanged = onPasswordUpdated,
-    ```
-
-    ```java
         passwordToggleVisibility =
-    ```
-
-    ```java
             passwordToggleVisibility)
     ```
 
@@ -702,93 +339,27 @@ val navController = rememberNavController()
 
     ```java
     @AndroidEntryPoint
-    ```
-
-    ```java
     class MainActivity : ComponentActivity() {
-    ```
-
-    ```java
         override fun onCreate(savedInstanceState: Bundle?)
-    ```
-
-    ```java
         {
-    ```
-
-    ```java
             super.onCreate(savedInstanceState)
-    ```
-
-    ```java
             setContent {
-    ```
-
-    ```java
                 SampleLoginTheme {
-    ```
-
-    ```java
                     // A surface container using the
-    ```
-
-    ```java
                        'background' color from the theme
-    ```
-
-    ```java
                     Surface(
-    ```
-
-    ```java
                         modifier = Modifier.fillMaxSize(),
-    ```
-
-    ```java
                         color =
-    ```
-
-    ```java
                            MaterialTheme.colors.background
-    ```
-
-    ```java
                     ) {
-    ```
-
-    ```java
                         val navController =
-    ```
-
-    ```java
                             rememberNavController()
-    ```
-
-    ```java
                         Navigation(navController =
-    ```
-
-    ```java
                             navController)
-    ```
-
-    ```java
                     }
-    ```
-
-    ```java
                 }
-    ```
-
-    ```java
             }
-    ```
-
-    ```java
         }
-    ```
-
-    ```java
     }
     ```
 
@@ -847,37 +418,13 @@ AnimatedNavHost(
 
     ```java
     SearchScreen(
-    ```
-
-    ```java
         viewModel = hiltViewModel(),
-    ```
-
-    ```java
         navigateToRepositoryScreen = { orgName ->
-    ```
-
-    ```java
             navController.navigate(
-    ```
-
-    ```java
                 Destination.BrowseRepositoryScreen.route +
-    ```
-
-    ```java
                 "/" + orgName
-    ```
-
-    ```java
             )
-    ```
-
-    ```java
         }
-    ```
-
-    ```java
     )
     ```
 
@@ -885,49 +432,16 @@ AnimatedNavHost(
 
     ```java
     composable(
-    ```
-
-    ```java
         route = Destination.BrowseRepositoryScreen.route +
-    ```
-
-    ```java
                 "/{org_name}",
-    ```
-
-    ```java
         arguments = listOf(navArgument("org_name") { type
-    ```
-
-    ```java
             = NavType.StringType }),
-    ```
-
-    ```java
         enterTransition = { scaleIn(tween(700)) },
-    ```
-
-    ```java
         exitTransition = { scaleOut(tween(700)) },
-    ```
-
-    ```java
     ) {
-    ```
-
-    ```java
         BrowseRepositoryScreen(
-    ```
-
-    ```java
             viewModel = hiltViewModel(),
-    ```
-
-    ```java
         )
-    ```
-
-    ```java
     }
     ```
 
@@ -973,29 +487,11 @@ Compose 让开发者处理深链接变得更加容易。`composable`函数接受
 
     ```java
     <activity>
-    ```
-
-    ```java
         <intent-filter>
-    ```
-
-    ```java
           ...
-    ```
-
-    ```java
           <data android:scheme="https"
-    ```
-
-    ```java
           android:host="www.yourcompanieslink.com" />
-    ```
-
-    ```java
         </intent-filter>
-    ```
-
-    ```java
     </activity>
     ```
 
@@ -1003,13 +499,7 @@ Compose 让开发者处理深链接变得更加容易。`composable`函数接受
 
     ```java
     val uri = "www.yourcompanieslink.com"
-    ```
-
-    ```java
     composable(deepLinks = listOf(navDeepLink { uriPattern = "$uri/{id}" }))
-    ```
-
-    ```java
     {...}
     ```
 
@@ -1056,81 +546,24 @@ override fun onNewIntent(intent: Intent) {
 
     ```java
     @Composable
-    ```
-
-    ```java
     fun contentLoginForTest(
-    ```
-
-    ```java
         uiState: AuthenticationState =
-    ```
-
-    ```java
         AuthenticationState(),
-    ```
-
-    ```java
         onUsernameUpdated : (String) -> Unit = {},
-    ```
-
-    ```java
         onPasswordUpdated :(String) -> Unit = {},
-    ```
-
-    ```java
         onLogin : () -> Unit = {},
-    ```
-
-    ```java
         passwordToggleVisibility: (Boolean) -> Unit = {},
-    ```
-
-    ```java
         onRegisterNavigateTo: () -> Unit = {}
-    ```
-
-    ```java
     ) {
-    ```
-
-    ```java
         LoginContent(
-    ```
-
-    ```java
             uiState = uiState,
-    ```
-
-    ```java
             onUsernameUpdated = onUsernameUpdated,
-    ```
-
-    ```java
             onPasswordUpdated = onPasswordUpdated,
-    ```
-
-    ```java
             onLogin = onLogin,
-    ```
-
-    ```java
             passwordToggleVisibility =
-    ```
-
-    ```java
                 passwordToggleVisibility,
-    ```
-
-    ```java
             onRegister = onRegisterNavigateTo
-    ```
-
-    ```java
         )
-    ```
-
-    ```java
     }
     ```
 
@@ -1138,33 +571,12 @@ override fun onNewIntent(intent: Intent) {
 
     ```java
     private fun initCompose() {
-    ```
-
-    ```java
         composeRuleTest.activity.setContent {
-    ```
-
-    ```java
             SampleLoginTheme {
-    ```
-
-    ```java
                 contentLoginForTest()
-    ```
-
-    ```java
                 launchRegisterScreenWithNavGraph()
-    ```
-
-    ```java
             }
-    ```
-
-    ```java
         }
-    ```
-
-    ```java
     }
     ```
 
@@ -1178,113 +590,32 @@ override fun onNewIntent(intent: Intent) {
 
     ```java
     private fun launchRegisterScreenWithNavGraph() {
-    ```
-
-    ```java
         composeRuleTest.activity.setContent {
-    ```
-
-    ```java
             SampleLoginTheme {
-    ```
-
-    ```java
                 navController = rememberNavController()
-    ```
-
-    ```java
                 NavHost(
-    ```
-
-    ```java
                     navController = navController,
-    ```
-
-    ```java
                     startDestination =
-    ```
-
-    ```java
                         Destination.LoginScreen.route
-    ```
-
-    ```java
                 ) {
-    ```
-
-    ```java
                     composable(Destination.LoginScreen
-    ```
-
-    ```java
                     .route) {
-    ```
-
-    ```java
                     LoginContentScreen(
-    ```
-
-    ```java
                     onRegisterNavigateTo = {
-    ```
-
-    ```java
                         navController.navigate(
-    ```
-
-    ```java
                             Destination.RegisterScreen
-    ```
-
-    ```java
                             .route)
-    ```
-
-    ```java
                     }, loginViewModel = hiltViewModel())
-    ```
-
-    ```java
                     }
-    ```
-
-    ```java
                     composable(
-    ```
-
-    ```java
                         Destination.RegisterScreen
-    ```
-
-    ```java
                         .route) {
-    ```
-
-    ```java
                             RegisterContentScreen(
-    ```
-
-    ```java
                                 hiltViewModel())
-    ```
-
-    ```java
                         }
-    ```
-
-    ```java
                 }
-    ```
-
-    ```java
             }
-    ```
-
-    ```java
         }
-    ```
-
-    ```java
     }
     ```
 
@@ -1294,49 +625,16 @@ override fun onNewIntent(intent: Intent) {
 
     ```java
     @Test
-    ```
-
-    ```java
     fun assertRegisterClickableButtonNavigatesToRegisterScreen() {
-    ```
-
-    ```java
         initCompose()
-    ```
-
-    ```java
         composeRuleTest.onNodeWithTag(
-    ```
-
-    ```java
             TestTags.LoginContent.REGISTER_USER)
-    ```
-
-    ```java
                 .performClick(
-    ```
-
-    ```java
         )
-    ```
-
-    ```java
         val route =
-    ```
-
-    ```java
             navController.currentDestination?.route
-    ```
-
-    ```java
         assert(route.equals(
-    ```
-
-    ```java
             Destination.RegisterScreen.route))
-    ```
-
-    ```java
     }
     ```
 

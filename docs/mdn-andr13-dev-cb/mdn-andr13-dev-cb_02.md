@@ -50,17 +50,8 @@
 
     ```java
     @Composable
-    ```
-
-    ```java
     fun EditTextExample() {
-    ```
-
-    ```java
         OutlinedTextField()
-    ```
-
-    ```java
     }
     ```
 
@@ -78,69 +69,21 @@
 
     ```java
     @Composable
-    ```
-
-    ```java
     fun EditTextExample() {
-    ```
-
-    ```java
         OutlinedTextField(
-    ```
-
-    ```java
             value = "",
-    ```
-
-    ```java
             onValueChange = {},
-    ```
-
-    ```java
             label = { Text(stringResource(id =
-    ```
-
-    ```java
             R.string.sample)) },
-    ```
-
-    ```java
             modifier = Modifier
-    ```
-
-    ```java
                 .fillMaxWidth()
-    ```
-
-    ```java
                 .padding(top = 16.dp),
-    ```
-
-    ```java
             colors =
-    ```
-
-    ```java
                 TextFieldDefaults.outlinedTextFieldColors(
-    ```
-
-    ```java
                     focusedBorderColor = Color.Blue,
-    ```
-
-    ```java
                     unfocusedBorderColor = Color.Black
-    ```
-
-    ```java
                 )
-    ```
-
-    ```java
         )
-    ```
-
-    ```java
     }
     ```
 
@@ -148,69 +91,21 @@
 
     ```java
     @Composable
-    ```
-
-    ```java
     fun NotOutlinedEditTextExample() {
-    ```
-
-    ```java
         TextField(
-    ```
-
-    ```java
             value = "",
-    ```
-
-    ```java
             onValueChange = {},
-    ```
-
-    ```java
             label = { Text(stringResource(id =
-    ```
-
-    ```java
             R.string.sample)) },
-    ```
-
-    ```java
             modifier = Modifier
-    ```
-
-    ```java
                 .fillMaxWidth()
-    ```
-
-    ```java
                 .padding(top = 8.dp, bottom = 16.dp),
-    ```
-
-    ```java
             colors =
-    ```
-
-    ```java
                 TextFieldDefaults.outlinedTextFieldColors(
-    ```
-
-    ```java
                     focusedBorderColor = Color.Blue,
-    ```
-
-    ```java
                     unfocusedBorderColor = Color.Black
-    ```
-
-    ```java
                 )
-    ```
-
-    ```java
         )
-    ```
-
-    ```java
     }
     ```
 
@@ -234,57 +129,18 @@
 
     ```java
     @Composable
-    ```
-
-    ```java
     fun ButtonWithIcon() {
-    ```
-
-    ```java
         Button(onClick = {}) {
-    ```
-
-    ```java
             Icon(
-    ```
-
-    ```java
                 painterResource(id =
-    ```
-
-    ```java
                     R.drawable.ic_baseline_shopping_bag_24                ),
-    ```
-
-    ```java
                 contentDescription = stringResource(
-    ```
-
-    ```java
                     id = R.string.shop),
-    ```
-
-    ```java
                 modifier = Modifier.size(20.dp)
-    ```
-
-    ```java
             )
-    ```
-
-    ```java
             Text(text = stringResource(id = R.string.buy),
-    ```
-
-    ```java
                 Modifier.padding(start = 10.dp))
-    ```
-
-    ```java
         }
-    ```
-
-    ```java
     }
     ```
 
@@ -292,21 +148,9 @@
 
     ```java
     @Composable
-    ```
-
-    ```java
     fun CornerCutShapeButton() {
-    ```
-
-    ```java
         Button(onClick = {}, shape = CutCornerShape(10)) {
-    ```
-
-    ```java
             Text(text = stringResource(
-    ```
-
-    ```java
                 id = R.string.cornerButton))  }}}}
     ```
 
@@ -314,33 +158,12 @@
 
     ```java
     @Composable
-    ```
-
-    ```java
     fun RoundCornerShapeButton() {
-    ```
-
-    ```java
         Button(onClick = {}, shape =
-    ```
-
-    ```java
         RoundedCornerShape(10.dp)) {
-    ```
-
-    ```java
             Text(text = stringResource(
-    ```
-
-    ```java
                 id = R.string.rounded))
-    ```
-
-    ```java
         }
-    ```
-
-    ```java
     }
     ```
 
@@ -348,57 +171,18 @@
 
     ```java
     @Composable
-    ```
-
-    ```java
     fun ElevatedButtonExample() {
-    ```
-
-    ```java
         Button(
-    ```
-
-    ```java
             onClick = {},
-    ```
-
-    ```java
             elevation = ButtonDefaults.elevation(
-    ```
-
-    ```java
                 defaultElevation = 8.dp,
-    ```
-
-    ```java
                 pressedElevation = 10.dp,
-    ```
-
-    ```java
                 disabledElevation = 0.dp
-    ```
-
-    ```java
             )
-    ```
-
-    ```java
         ) {
-    ```
-
-    ```java
             Text(text = stringResource(
-    ```
-
-    ```java
                 id = R.string.elevated))
-    ```
-
-    ```java
         }
-    ```
-
-    ```java
     }
     ```
 
@@ -418,37 +202,13 @@
 
     ```java
     @Composable
-    ```
-
-    ```java
     fun ImageViewExample() {
-    ```
-
-    ```java
         Image(
-    ```
-
-    ```java
             painterResource(id = R.drawable.android),
-    ```
-
-    ```java
             contentDescription = stringResource(
-    ```
-
-    ```java
                 id = R.string.image),
-    ```
-
-    ```java
             modifier = Modifier.size(200.dp)
-    ```
-
-    ```java
         )
-    ```
-
-    ```java
     }
     ```
 
@@ -496,21 +256,9 @@
 
     ```java
     data class City(
-    ```
-
-    ```java
         val id: Int,
-    ```
-
-    ```java
         @StringRes val nameResourceId: Int,
-    ```
-
-    ```java
         @DrawableRes val imageResourceId: Int
-    ```
-
-    ```java
     )
     ```
 
@@ -518,61 +266,19 @@
 
     ```java
     class CityDataSource {
-    ```
-
-    ```java
         fun loadCities(): List<City> {
-    ```
-
-    ```java
             return listOf<City>(
-    ```
-
-    ```java
                 City(1, R.string.spain, R.drawable.spain),
-    ```
-
-    ```java
                 City(2, R.string.new_york,
-    ```
-
-    ```java
                     R.drawable.newyork),
-    ```
-
-    ```java
                 City(3, R.string.tokyo, R.drawable.tokyo),
-    ```
-
-    ```java
                 City(4, R.string.switzerland,
-    ```
-
-    ```java
                     R.drawable.switzerland),
-    ```
-
-    ```java
                 City(5, R.string.singapore,
-    ```
-
-    ```java
                     R.drawable.singapore),
-    ```
-
-    ```java
                 City(6, R.string.paris, R.drawable.paris),
-    ```
-
-    ```java
             )
-    ```
-
-    ```java
         }
-    ```
-
-    ```java
     }
     ```
 
@@ -580,21 +286,9 @@
 
     ```java
     @Preview(showBackground = true)
-    ```
-
-    ```java
     @Composable
-    ```
-
-    ```java
     private fun CityCardPreview() {
-    ```
-
-    ```java
         CityApp()
-    ```
-
-    ```java
     }
     ```
 
@@ -602,33 +296,12 @@
 
     ```java
     @Composable
-    ```
-
-    ```java
     fun CityList(cityList: List<City>) {
-    ```
-
-    ```java
         LazyColumn {
-    ```
-
-    ```java
             items(cityList) { cities ->
-    ```
-
-    ```java
                 CityCard(cities)
-    ```
-
-    ```java
             }
-    ```
-
-    ```java
         }
-    ```
-
-    ```java
     }
     ```
 
@@ -636,97 +309,28 @@
 
     ```java
     @Composable
-    ```
-
-    ```java
     fun CityCard(city: City) {
-    ```
-
-    ```java
         Card(modifier = Modifier.padding(10.dp),
-    ```
-
-    ```java
         elevation = 4.dp) {
-    ```
-
-    ```java
             Column {
-    ```
-
-    ```java
                 Image(
-    ```
-
-    ```java
                     painter = painterResource(
-    ```
-
-    ```java
                         city.imageResourceId),
-    ```
-
-    ```java
                     contentDescription = stringResource(
-    ```
-
-    ```java
                         city.nameResourceId),
-    ```
-
-    ```java
                     modifier = Modifier
-    ```
-
-    ```java
                         .fillMaxWidth()
-    ```
-
-    ```java
                         .height(154.dp),
-    ```
-
-    ```java
                     contentScale = ContentScale.Crop
-    ```
-
-    ```java
                 )
-    ```
-
-    ```java
                 Text(
-    ```
-
-    ```java
                     text = LocalContext.current.getString(
-    ```
-
-    ```java
                         city.nameResourceId),
-    ```
-
-    ```java
                     modifier = Modifier.padding(16.dp),
-    ```
-
-    ```java
                     style = MaterialTheme.typography.h5
-    ```
-
-    ```java
                 )
-    ```
-
-    ```java
             }
-    ```
-
-    ```java
         }
-    ```
-
-    ```java
     }
     ```
 
@@ -783,13 +387,7 @@ fun Card(
 
     ```java
     implementation "com.google.accompanist:accompanist-pager:0.x.x"
-    ```
-
-    ```java
     implementation "com.google.accompanist:accompanist-pager-indicators:0.x.x"
-    ```
-
-    ```java
     implementation 'androidx.Compose.material:material:1.x.x'
     ```
 
@@ -799,9 +397,6 @@ Jetpack Compose 提供了 **Accompanist**，这是一组旨在通过开发者常
 
     ```java
     @Composable
-    ```
-
-    ```java
     fun CityTabCarousel(){}
     ```
 
@@ -809,37 +404,13 @@ Jetpack Compose 提供了 **Accompanist**，这是一组旨在通过开发者常
 
     ```java
     @Composable
-    ```
-
-    ```java
     fun CityTabCarousel(
-    ```
-
-    ```java
         pages: MutableList<String> = arrayListOf(
-    ```
-
-    ```java
             "Spain",
-    ```
-
-    ```java
             "New York",
-    ```
-
-    ```java
             "Tokyo",
-    ```
-
-    ```java
             "Switzerland",
-    ```
-
-    ```java
             "Singapore",
-    ```
-
-    ```java
             "Paris" )) {. . .}
     ```
 
@@ -847,13 +418,7 @@ Jetpack Compose 提供了 **Accompanist**，这是一组旨在通过开发者常
 
     ```java
     val context = LocalContext.current
-    ```
-
-    ```java
     var pagerState = rememberPagerState()
-    ```
-
-    ```java
     val coroutineScope = rememberCoroutineScope()
     ```
 
@@ -861,93 +426,27 @@ Jetpack Compose 提供了 **Accompanist**，这是一组旨在通过开发者常
 
     ```java
     Column {
-    ```
-
-    ```java
         ScrollableTabRow(
-    ```
-
-    ```java
             selectedTabIndex = pagerState.currentPage,
-    ```
-
-    ```java
             indicator = { tabPositions ->
-    ```
-
-    ```java
                 TabRowDefaults.Indicator(...)
-    ```
-
-    ```java
             },
-    ```
-
-    ```java
             edgePadding = 0.dp,
-    ```
-
-    ```java
             backgroundColor = Color(
-    ```
-
-    ```java
                 context.resources.getColor(R.color.white,
-    ```
-
-    ```java
                     null)),
-    ```
-
-    ```java
         ) {
-    ```
-
-    ```java
             pages.forEachIndexed { index, title ->
-    ```
-
-    ```java
                 val isSelected =
-    ```
-
-    ```java
                     pagerState.currentPage == index
-    ```
-
-    ```java
                 TabHeader(
-    ```
-
-    ```java
                     title,
-    ```
-
-    ```java
                     isSelected,
-    ```
-
-    ```java
                     onClick = { coroutineScope.launch {
-    ```
-
-    ```java
                     pagerState.animateScrollToPage(index)
-    ```
-
-    ```java
                     } },
-    ```
-
-    ```java
                 )
-    ```
-
-    ```java
             }
-    ```
-
-    ```java
         }
     ```
 
@@ -955,69 +454,21 @@ Jetpack Compose 提供了 **Accompanist**，这是一组旨在通过开发者常
 
     ```java
         HorizontalPager(
-    ```
-
-    ```java
             count = pages.size,
-    ```
-
-    ```java
             state = pagerState,
-    ```
-
-    ```java
             modifier = Modifier
-    ```
-
-    ```java
                 .fillMaxWidth()
-    ```
-
-    ```java
                 .fillMaxHeight()
-    ```
-
-    ```java
                 .background(Color.White)
-    ```
-
-    ```java
         ) { page ->
-    ```
-
-    ```java
             Text(
-    ```
-
-    ```java
                 text = "Display City Name:
-    ```
-
-    ```java
                     ${pages[page]}",
-    ```
-
-    ```java
                 modifier = Modifier.fillMaxWidth(),
-    ```
-
-    ```java
                 style = TextStyle(
-    ```
-
-    ```java
                     textAlign = TextAlign.Center
-    ```
-
-    ```java
                 )
-    ```
-
-    ```java
             )
-    ```
-
-    ```java
         }
     ```
 
@@ -1075,9 +526,6 @@ Android 中的动画是将运动效果添加到视图的过程。这可以通过
 
     ```java
     @Composable
-    ```
-
-    ```java
     fun CollapsingToolbarExample() {...}
     ```
 
@@ -1085,9 +533,6 @@ Android 中的动画是将运动效果添加到视图的过程。这可以通过
 
     ```java
     private val height = 260.dp
-    ```
-
-    ```java
     private val titleToolbar = 50.dp
     ```
 
@@ -1095,73 +540,22 @@ Android 中的动画是将运动效果添加到视图的过程。这可以通过
 
     ```java
     @Composable
-    ```
-
-    ```java
     fun CollapsingToolbarExample() {
-    ```
-
-    ```java
         val scrollState: ScrollState =
-    ```
-
-    ```java
             rememberScrollState(0)
-    ```
-
-    ```java
         val headerHeight = with(LocalDensity.current) {
-    ```
-
-    ```java
             height.toPx() }
-    ```
-
-    ```java
         val toolbarHeight = with(LocalDensity.current) {
-    ```
-
-    ```java
             titleToolbar.toPx() }
-    ```
-
-    ```java
         Box(
-    ```
-
-    ```java
             modifier = Modifier.fillMaxSize()
-    ```
-
-    ```java
         ) {
-    ```
-
-    ```java
             CollapsingHeader(scrollState, headerHeight)
-    ```
-
-    ```java
             FactsAboutNewYork(scrollState)
-    ```
-
-    ```java
             OurToolBar(scrollState, headerHeight,
-    ```
-
-    ```java
                 toolbarHeight)
-    ```
-
-    ```java
             City()
-    ```
-
-    ```java
         }
-    ```
-
-    ```java
     }
     ```
 
@@ -1171,49 +565,16 @@ Android 中的动画是将运动效果添加到视图的过程。这可以通过
 
     ```java
     Box(
-    ```
-
-    ```java
         Modifier
-    ```
-
-    ```java
             .fillMaxSize()
-    ```
-
-    ```java
             .background(
-    ```
-
-    ```java
                 brush = Brush.verticalGradient(
-    ```
-
-    ```java
                     colors = listOf(Color.Transparent,
-    ```
-
-    ```java
                     Color(0xFF6D38CA)),
-    ```
-
-    ```java
                     startY = 1 * headerHeight / 5
-    ```
-
-    ```java
                 )
-    ```
-
-    ```java
             )
-    ```
-
-    ```java
     )
-    ```
-
-    ```java
     ...
     ```
 
@@ -1221,25 +582,10 @@ Android 中的动画是将运动效果添加到视图的过程。这可以通过
 
     ```java
     AnimatedVisibility(
-    ```
-
-    ```java
         visible = showToolbar,
-    ```
-
-    ```java
         enter = fadeIn(animationSpec = tween(200)),
-    ```
-
-    ```java
         exit = fadeOut(animationSpec = tween(200))
-    ```
-
-    ```java
     ) {
-    ```
-
-    ```java
     ...
     ```
 
@@ -1308,25 +654,10 @@ Android 中的动画是将运动效果添加到视图的过程。这可以通过
 
     ```java
     Image(
-    ```
-
-    ```java
         modifier = modifier
-    ```
-
-    ```java
         painter = painterResource(city.imageResourceId),
-    ```
-
-    ```java
         contentDescription =
-    ```
-
-    ```java
             stringResource(R.string.city_images))
-    ```
-
-    ```java
     )
     ```
 
@@ -1342,21 +673,9 @@ Android 中的动画是将运动效果添加到视图的过程。这可以通过
 
     ```java
     ...
-    ```
-
-    ```java
     modifier = Modifier
-    ```
-
-    ```java
         .padding(18.dp)
-    ```
-
-    ```java
         .semantics { heading() }
-    ```
-
-    ```java
     ...
     ```
 
@@ -1407,25 +726,10 @@ fun NonCheckableSwitch(){
 
     ```java
     @Composable
-    ```
-
-    ```java
     fun CircleProgressIndicatorExample(tracker: Float, progress: Float) {
-    ```
-
-    ```java
         val circleColors = listOf(
-    ```
-
-    ```java
             colorResource(id = R.color.purple_700),
-    ```
-
-    ```java
             colorResource(id = R.color.teal_200)
-    ```
-
-    ```java
         )
     ```
 
@@ -1457,45 +761,15 @@ colorResource(id = R.color.teal_200)
 
     ```java
     drawArc(
-    ```
-
-    ```java
         brush = Brush.linearGradient(colors =
-    ```
-
-    ```java
             circleColors),
-    ```
-
-    ```java
         startAngle = -90f,
-    ```
-
-    ```java
         sweepAngle = progress(tracker, progress),
-    ```
-
-    ```java
         useCenter = false,
-    ```
-
-    ```java
         style = Stroke(width = 55f, cap =
-    ```
-
-    ```java
             StrokeCap.Round),
-    ```
-
-    ```java
         size = Size(size.width, size.height)
-    ```
-
-    ```java
     ) . . .
-    ```
-
-    ```java
     . . .
     ```
 
@@ -1503,21 +777,9 @@ colorResource(id = R.color.teal_200)
 
     ```java
     private fun progress(tracker: Float, progress: Float): Float {
-    ```
-
-    ```java
         val totalProgress = (progress * 100) / tracker
-    ```
-
-    ```java
         return ((360 * totalProgress) / 100)
-    ```
-
-    ```java
     }
-    ```
-
-    ```java
     . . .
     ```
 

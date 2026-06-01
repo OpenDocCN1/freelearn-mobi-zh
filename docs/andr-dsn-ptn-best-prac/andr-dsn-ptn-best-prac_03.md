@@ -63,10 +63,6 @@
     <include 
         android:id="@+id/toolbar" 
         layout="@layout/toolbar" /> 
-
-    ```
-
-    ```kt
     <android.support.v7.widget.Toolbar  
 
         android:id="@+id/toolbar" 

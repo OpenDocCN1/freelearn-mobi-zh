@@ -40,33 +40,12 @@ Room 最显著的优势是它易于与其他架构组件集成，并为开发者
 
     ```java
     dependencies {
-    ```
-
-    ```java
     implementation "androidx.Room:Room-runtime:2.x.x"
-    ```
-
-    ```java
     kapt "androidx.Room:Room-compiler:2.x.x"
-    ```
-
-    ```java
     }
-    ```
-
-    ```java
     //include kapt on your plugins
-    ```
-
-    ```java
     plugins {
-    ```
-
-    ```java
         id 'kotlin-kapt'
-    ```
-
-    ```java
     }
     ```
 
@@ -76,41 +55,14 @@ Room 最显著的优势是它易于与其他架构组件集成，并为开发者
 
     ```java
     @Entity(tableName = "user_information")
-    ```
-
-    ```java
     data class UserInformationModel(
-    ```
-
-    ```java
         val id: Int = 0,
-    ```
-
-    ```java
         val firstName: String,
-    ```
-
-    ```java
         val lastName: String,
-    ```
-
-    ```java
         val dateOfBirth: Int,
-    ```
-
-    ```java
         val gender: String,
-    ```
-
-    ```java
         val city: String,
-    ```
-
-    ```java
         val profession: String
-    ```
-
-    ```java
     )
     ```
 
@@ -124,33 +76,12 @@ Room 最显著的优势是它易于与其他架构组件集成，并为开发者
 
     ```java
     import androidx.Room.Entity
-    ```
-
-    ```java
     import androidx.Room.PrimaryKey
-    ```
-
-    ```java
     @Entity(tableName = "user_information")
-    ```
-
-    ```java
     data class UserInformationModel(
-    ```
-
-    ```java
         @PrimaryKey(autoGenerate = true)
-    ```
-
-    ```java
         val id: Int = 0,
-    ```
-
-    ```java
         ...
-    ```
-
-    ```java
     )
     ```
 
@@ -185,21 +116,9 @@ interface UserInformationDao {
 
     ```java
     @Database(entities = [UserInformation::class], version = 1, exportSchema = false)
-    ```
-
-    ```java
     abstract class UserInformationDatabase : RoomDatabase() {
-    ```
-
-    ```java
         abstract fun userInformationDao():
-    ```
-
-    ```java
             UserInformationDao
-    ```
-
-    ```java
     }
     ```
 
@@ -249,29 +168,11 @@ interface UserInformationDao {
 
     ```java
     @HiltAndroidApp
-    ```
-
-    ```java
     class UserInformation : Application()
-    ```
-
-    ```java
     <application
-    ```
-
-    ```java
         android:allowBackup="true"
-    ```
-
-    ```java
         android:name=".UserInformation"
-    ```
-
-    ```java
         tools:targetApi="33">
-    ```
-
-    ```java
     ...
     ```
 
@@ -281,89 +182,26 @@ interface UserInformationDao {
 
     ```java
     @Module
-    ```
-
-    ```java
     @InstallIn(SingletonComponent::class)
-    ```
-
-    ```java
     class DataBaseModule {
-    ```
-
-    ```java
         @Singleton
-    ```
-
-    ```java
         @Provides
-    ```
-
-    ```java
         fun provideDatabase(@ApplicationContext context:
-    ```
-
-    ```java
         Context): UserInformationDatabase {
-    ```
-
-    ```java
             return Room.databaseBuilder(
-    ```
-
-    ```java
                 context,
-    ```
-
-    ```java
                 UserInformationDatabase::class.java,
-    ```
-
-    ```java
                 "user_information.db"
-    ```
-
-    ```java
             ).build()
-    ```
-
-    ```java
         }
-    ```
-
-    ```java
         @Singleton
-    ```
-
-    ```java
         @Provides
-    ```
-
-    ```java
         fun provideUserInformationDao(
-    ```
-
-    ```java
         userInformationDatabase: UserInformationDatabase):
-    ```
-
-    ```java
         UserInformationDao {
-    ```
-
-    ```java
             return
-    ```
-
-    ```java
               userInformationDatabase.userInformationDao()
-    ```
-
-    ```java
         }
-    ```
-
-    ```java
     }
     ```
 
@@ -371,25 +209,10 @@ interface UserInformationDao {
 
     ```java
     interface UserInfoService {
-    ```
-
-    ```java
         fun getUserInformationFromDB():
-    ```
-
-    ```java
             Flow<UserInformation>
-    ```
-
-    ```java
         suspend fun addUserInformationInDB(
-    ```
-
-    ```java
             userInformation: UserInformation)
-    ```
-
-    ```java
     }
     ```
 
@@ -397,45 +220,15 @@ interface UserInformationDao {
 
     ```java
     @Singleton
-    ```
-
-    ```java
     class UserInfoServiceImpl() : UserInfoService {
-    ```
-
-    ```java
         override fun getUserInformationFromDB():
-    ```
-
-    ```java
             Flow<UserInformation> {
-    ```
-
-    ```java
                 TODO("Not yet implemented")
-    ```
-
-    ```java
         }
-    ```
-
-    ```java
         override suspend fun addUserInformationInDB(
-    ```
-
-    ```java
             userInformation: UserInformation) {
-    ```
-
-    ```java
                 TODO("Not yet implemented")
-    ```
-
-    ```java
         }
-    ```
-
-    ```java
     }
     ```
 
@@ -443,13 +236,7 @@ interface UserInformationDao {
 
     ```java
     class UserInfoServiceImpl @Inject constructor(
-    ```
-
-    ```java
     private val userInformationDao: UserInformationDao
-    ```
-
-    ```java
     ): UserInfoService
     ```
 
@@ -457,53 +244,17 @@ interface UserInformationDao {
 
     ```java
     override suspend fun addUserInformationInDB(
-    ```
-
-    ```java
     userInformation: UserInformation) {
-    ```
-
-    ```java
         userInformationDao.insertUserInformation(
-    ```
-
-    ```java
             UserInformation(
-    ```
-
-    ```java
                 firstName = userInformation.firstName,
-    ```
-
-    ```java
                 lastName = userInformation.lastName,
-    ```
-
-    ```java
                 dateOfBirth = userInformation.dateOfBirth,
-    ```
-
-    ```java
                 gender = userInformation.gender,
-    ```
-
-    ```java
                 city = userInformation.city,
-    ```
-
-    ```java
                 profession = userInformation.profession
-    ```
-
-    ```java
             )
-    ```
-
-    ```java
         )
-    ```
-
-    ```java
     }
     ```
 
@@ -511,73 +262,22 @@ interface UserInformationDao {
 
     ```java
     override fun getUserInformationFromDB() =
-    ```
-
-    ```java
         userInformationDao.getUsersInformation().filter {
-    ```
-
-    ```java
             information -> information.isNotEmpty()
-    ```
-
-    ```java
         }.flatMapConcat {
-    ```
-
-    ```java
             userInformationDao.loadAllUserInformation()
-    ```
-
-    ```java
                 .map { userInfo ->
-    ```
-
-    ```java
                     UserInfo(
-    ```
-
-    ```java
                         id = userInfo.id,
-    ```
-
-    ```java
                         firstName = userInfo.firstName,
-    ```
-
-    ```java
                         lastName = userInfo.lastName,
-    ```
-
-    ```java
                         dateOfBirth =
-    ```
-
-    ```java
                             userInfo.dateOfBirth,
-    ```
-
-    ```java
                         gender = userInfo.gender,
-    ```
-
-    ```java
                         city = userInfo.city,
-    ```
-
-    ```java
                         profession = userInfo.profession
-    ```
-
-    ```java
                     )
-    ```
-
-    ```java
                 }
-    ```
-
-    ```java
         }
     ```
 
@@ -585,37 +285,13 @@ interface UserInformationDao {
 
     ```java
     @Module
-    ```
-
-    ```java
     @InstallIn(SingletonComponent::class)
-    ```
-
-    ```java
     abstract class UserInfoServiceModule {
-    ```
-
-    ```java
         @Singleton
-    ```
-
-    ```java
         @Binds
-    ```
-
-    ```java
         abstract fun bindUserService(
-    ```
-
-    ```java
             userInfoServiceImpl: UserInfoServiceImpl):
-    ```
-
-    ```java
                 UserInfoService
-    ```
-
-    ```java
     }
     ```
 
@@ -623,45 +299,15 @@ interface UserInformationDao {
 
     ```java
     @HiltViewModel
-    ```
-
-    ```java
     class UserInfoViewModel @Inject constructor(
-    ```
-
-    ```java
         private val userInfoService: UserInfoService
-    ```
-
-    ```java
     ) : ViewModel() {
-    ```
-
-    ```java
         fun saveUserInformationData(userInfo: UserInfo) {
-    ```
-
-    ```java
             viewModelScope.launch {
-    ```
-
-    ```java
                 userInfoService.addUserInformationInDB(
-    ```
-
-    ```java
                     userInfo)
-    ```
-
-    ```java
             }
-    ```
-
-    ```java
         }
-    ```
-
-    ```java
     }
     ```
 
@@ -753,53 +399,17 @@ fun provideUserInformationDao(userInformationDatabase: UserInformationDatabase):
 
     ```java
     @Entity(tableName = "budgets")
-    ```
-
-    ```java
     data class BudgetData(
-    ```
-
-    ```java
         @PrimaryKey(autoGenerate = true)
-    ```
-
-    ```java
         var id: Int = 0,
-    ```
-
-    ```java
         var budgetName: String = "",
-    ```
-
-    ```java
         var budgetAmount: Double = 0.0,
-    ```
-
-    ```java
         var expenses: String = "",
-    ```
-
-    ```java
         var startDate: String = "",
-    ```
-
-    ```java
         var endDate: String = "",
-    ```
-
-    ```java
         var notify: Int = 0,
-    ```
-
-    ```java
         var currency: String = "",
-    ```
-
-    ```java
         var totalExpenses: Double
-    ```
-
-    ```java
     )
     ```
 
@@ -807,49 +417,16 @@ fun provideUserInformationDao(userInformationDatabase: UserInformationDatabase):
 
     ```java
     @Entity(tableName = "expenses")
-    ```
-
-    ```java
     data class ExpenseData(
-    ```
-
-    ```java
         @PrimaryKey(autoGenerate = true)
-    ```
-
-    ```java
         var id: Int = 0,
-    ```
-
-    ```java
         var expenseName: String = "",
-    ```
-
-    ```java
         var expenseType: String = "",
-    ```
-
-    ```java
         var expenseAmount: Double = 0.0,
-    ```
-
-    ```java
         @ColumnInfo(name = "updated_at")
-    ```
-
-    ```java
         var expenseDate: String = "",
-    ```
-
-    ```java
         var note: String = "",
-    ```
-
-    ```java
         var currency: String = ""
-    ```
-
-    ```java
     )
     ```
 
@@ -857,33 +434,12 @@ fun provideUserInformationDao(userInformationDatabase: UserInformationDatabase):
 
     ```java
     @Entity(tableName = "items")
-    ```
-
-    ```java
     Data class ExpenseItem(
-    ```
-
-    ```java
         @PrimaryKey(autoGenerate = true)
-    ```
-
-    ```java
         private var _id: Int
-    ```
-
-    ```java
         val name: String
-    ```
-
-    ```java
         var type: String?
-    ```
-
-    ```java
         val imageContentId: Int
-    ```
-
-    ```java
         val colorContentId: Int)
     ```
 
@@ -891,21 +447,9 @@ fun provideUserInformationDao(userInformationDatabase: UserInformationDatabase):
 
     ```java
     abstract class AppDatabase : RoomDatabase() {
-    ```
-
-    ```java
         abstract fun budgetDao(): BudgetDao
-    ```
-
-    ```java
         abstract fun itemDao(): ItemDao
-    ```
-
-    ```java
         abstract fun expenseDao(): ExpenseDao
-    ```
-
-    ```java
     }
     ```
 
@@ -913,45 +457,15 @@ fun provideUserInformationDao(userInformationDatabase: UserInformationDatabase):
 
     ```java
     @Database(
-    ```
-
-    ```java
         entities = [ExpenseItem::class, BudgetData::class,
-    ```
-
-    ```java
             ExpenseData::class],
-    ```
-
-    ```java
         version = 1
-    ```
-
-    ```java
     )
-    ```
-
-    ```java
     @TypeConverters(DateConverter::class)
-    ```
-
-    ```java
     abstract class AppDatabase : RoomDatabase() {
-    ```
-
-    ```java
         abstract fun budgetDao(): BudgetDao
-    ```
-
-    ```java
         abstract fun itemDao(): ItemDao
-    ```
-
-    ```java
         abstract fun expenseDao(): ExpenseDao
-    ```
-
-    ```java
     }
     ```
 
@@ -959,21 +473,9 @@ fun provideUserInformationDao(userInformationDatabase: UserInformationDatabase):
 
     ```java
     data class ExpenseItem(
-    ```
-
-    ```java
     ...
-    ```
-
-    ```java
         @Embedded val tasks: Tasks
-    ```
-
-    ```java
       )
-    ```
-
-    ```java
     data class Tasks(...)
     ```
 
@@ -983,29 +485,11 @@ fun provideUserInformationDao(userInformationDatabase: UserInformationDatabase):
 
     ```java
     data class Tasks (
-    ```
-
-    ```java
         @PrimaryKey(autoGenerate = true)
-    ```
-
-    ```java
         var id = 0
-    ```
-
-    ```java
         var description: String
-    ```
-
-    ```java
         var priority: Int
-    ```
-
-    ```java
         @ColumnInfo(name = "updated_at")
-    ```
-
-    ```java
         var updatedAt: Date)
     ```
 
@@ -1051,117 +535,33 @@ fun provideUserInformationDao(userInformationDatabase: UserInformationDatabase):
 
     ```java
     fun onCreate(db: SQLiteDatabase) {
-    ```
-
-    ```java
         // Create a String that contains the SQL statement
-    ```
-
-    ```java
            to create the items table
-    ```
-
-    ```java
         val SQL_CREATE_ITEMS_TABLE =(
-    ```
-
-    ```java
                 "CREATE TABLE " + ItemsContract.ItemsEntry
-    ```
-
-    ```java
                          .TABLE_NAME.toString() + " ("
-    ```
-
-    ```java
                          + ItemsContract.ItemsEntry.
-    ```
-
-    ```java
                          _Id.toString()
-    ```
-
-    ```java
                          + " INTEGER PRIMARY KEY
-    ```
-
-    ```java
                          AUTOINCREMENT, "
-    ```
-
-    ```java
                          + ItemsContract.ItemsEntry
-    ```
-
-    ```java
                          .COLUMN_ITEM_NAME.toString()
-    ```
-
-    ```java
                          + " TEXT NOT NULL, "
-    ```
-
-    ```java
                          + ItemsContract.ItemsEntry
-    ```
-
-    ```java
                          .COLUMN_ITEM_TYPE.toString()
-    ```
-
-    ```java
                          + " TEXT NOT NULL, "
-    ```
-
-    ```java
                          + ItemsContract.ItemsEntry
-    ```
-
-    ```java
                          .COLUMN_ITEM_LOGO.toString()
-    ```
-
-    ```java
                          + " INTEGER NOT NULL DEFAULT 0, "
-    ```
-
-    ```java
                          + ItemsContract.ItemsEntry
-    ```
-
-    ```java
                          .COLUMN_ITEM_COLOR.toString()
-    ```
-
-    ```java
                          + " INTEGER NOT NULL DEFAULT 0, "
-    ```
-
-    ```java
                          + ItemsContract.ItemsEntry
-    ```
-
-    ```java
                          .COLUMN_ITEM_CREATED_DATE
-    ```
-
-    ```java
                          .toString() + " DATE NOT NULL
-    ```
-
-    ```java
                          DEFAULT CURRENT_TIMESTAMP);")
-    ```
-
-    ```java
         // Execute the SQL statement
-    ```
-
-    ```java
         db.execSQL(SQL_CREATE_ITEMS_TABLE)
-    ```
-
-    ```java
     }
     ```
 
@@ -1171,73 +571,22 @@ fun provideUserInformationDao(userInformationDatabase: UserInformationDatabase):
 
     ```java
     val MIGRATION_1_2 = object : Migration(1, 2) {
-    ```
-
-    ```java
         override fun migrate(database:
-    ```
-
-    ```java
         SupportSQLiteDatabase) {
-    ```
-
-    ```java
             //alter items table
-    ```
-
-    ```java
             database.execSQL("CREATE TABLE new_items (_id
-    ```
-
-    ```java
                 INTEGER PRIMARY KEY AUTOINCREMENT NOT
-    ```
-
-    ```java
                 NULL, name TEXT NOT NULL, type TEXT,
-    ```
-
-    ```java
                 imageContentId INTEGER NOT NULL,
-    ```
-
-    ```java
                 colorContentId INTEGER NOT NULL)")
-    ```
-
-    ```java
             database.execSQL("INSERT INTO new_items
-    ```
-
-    ```java
                 (_id,name,type,imageContentId,
-    ```
-
-    ```java
                 colorContentId)Select_id,name,type,
-    ```
-
-    ```java
                 imageContentId, colorContentId FROM
-    ```
-
-    ```java
                 items")
-    ```
-
-    ```java
             database.execSQL("DROP TABLE items")
-    ```
-
-    ```java
             database.execSQL("ALTER TABLE new_items RENAME
-    ```
-
-    ```java
                 TO items")
-    ```
-
-    ```java
         }
     ```
 
@@ -1245,49 +594,16 @@ fun provideUserInformationDao(userInformationDatabase: UserInformationDatabase):
 
     ```java
     Room.databaseBuilder(
-    ```
-
-    ```java
         androidContext(),
-    ```
-
-    ```java
         AppDatabase::class.java, "budget.db"
-    ```
-
-    ```java
     )
-    ```
-
-    ```java
         .addCallback(object : RoomDatabase.Callback() {
-    ```
-
-    ```java
             override fun
-    ```
-
-    ```java
             onCreate(db:SupportSQLiteDatabase){
-    ```
-
-    ```java
                 super.onCreate(db)
-    ```
-
-    ```java
             }
-    ```
-
-    ```java
         })
-    ```
-
-    ```java
         .addMigrations(MIGRATION_1_2)
-    ```
-
-    ```java
         .build()
     ```
 
@@ -1295,29 +611,11 @@ fun provideUserInformationDao(userInformationDatabase: UserInformationDatabase):
 
     ```java
     @Database(
-    ```
-
-    ```java
         entities = [<List of entities>],
-    ```
-
-    ```java
         version = 2
-    ```
-
-    ```java
     )
-    ```
-
-    ```java
     abstract class AppDatabase : RoomDatabase() {
-    ```
-
-    ```java
         abstract fun itemDao(): ItemDao
-    ```
-
-    ```java
     }
     ```
 
@@ -1351,9 +649,6 @@ fun provideUserInformationDao(userInformationDatabase: UserInformationDatabase):
 
     ```java
     androidTestImplementation "com.google.truth:truth:1.1.3"
-    ```
-
-    ```java
     androidTestImplementation "android.arch.core:core-testing:1.1.1"
     ```
 
@@ -1367,9 +662,6 @@ fun provideUserInformationDao(userInformationDatabase: UserInformationDatabase):
 
     ```java
     private lateinit var database: UserInformationDatabase
-    ```
-
-    ```java
     private lateinit var userInformationDao: UserInformationDao
     ```
 
@@ -1377,41 +669,14 @@ fun provideUserInformationDao(userInformationDatabase: UserInformationDatabase):
 
     ```java
     @Before
-    ```
-
-    ```java
     fun databaseCreated() {
-    ```
-
-    ```java
         database = Room.inMemoryDatabaseBuilder(
-    ```
-
-    ```java
             ApplicationProvider.getApplicationContext(),
-    ```
-
-    ```java
                 UserInformationDatabase::class.java
-    ```
-
-    ```java
         )
-    ```
-
-    ```java
             .allowMainThreadQueries()
-    ```
-
-    ```java
             .build()
-    ```
-
-    ```java
         userInformationDao = database.userInformationDao()
-    ```
-
-    ```java
     }
     ```
 
@@ -1419,17 +684,8 @@ fun provideUserInformationDao(userInformationDatabase: UserInformationDatabase):
 
     ```java
     @After
-    ```
-
-    ```java
     fun closeDatabase() {
-    ```
-
-    ```java
         database.close()
-    ```
-
-    ```java
     }
     ```
 
@@ -1437,93 +693,27 @@ fun provideUserInformationDao(userInformationDatabase: UserInformationDatabase):
 
     ```java
     @Test
-    ```
-
-    ```java
     fun insertUserInformationReturnsTrue() = runBlocking {
-    ```
-
-    ```java
         val userOne = UserInformationModel(
-    ```
-
-    ```java
             id = 1,
-    ```
-
-    ```java
             firstName = "Michelle",
-    ```
-
-    ```java
             lastName = "Smith",
-    ```
-
-    ```java
             dateOfBirth = 9121990,
-    ```
-
-    ```java
             gender = "Male",
-    ```
-
-    ```java
             city = "New york",
-    ```
-
-    ```java
             profession = "Software Engineer"
-    ```
-
-    ```java
         )
-    ```
-
-    ```java
         userInformationDao.insertUserInformation(userOne)
-    ```
-
-    ```java
         val latch = CountDownLatch(1)
-    ```
-
-    ```java
         val job = async(Dispatchers.IO) {
-    ```
-
-    ```java
             userInformationDao.getUsersInformation()
-    ```
-
-    ```java
                 .collect {
-    ```
-
-    ```java
                     assertThat(it).contains(userOne)
-    ```
-
-    ```java
                     latch.countDown()
-    ```
-
-    ```java
                 }
-    ```
-
-    ```java
         }
-    ```
-
-    ```java
         latch.await()
-    ```
-
-    ```java
         job.cancelAndJoin()
-    ```
-
-    ```java
     }
     ```
 
@@ -1531,137 +721,38 @@ fun provideUserInformationDao(userInformationDatabase: UserInformationDatabase):
 
     ```java
     @Test
-    ```
-
-    ```java
     fun deleteUserInformation() = runBlocking {
-    ```
-
-    ```java
         val userOne = UserInformationModel(
-    ```
-
-    ```java
             id = 1,
-    ```
-
-    ```java
             firstName = "Michelle",
-    ```
-
-    ```java
             lastName = "Smith",
-    ```
-
-    ```java
             dateOfBirth = 9121990,
-    ```
-
-    ```java
             gender = "Male",
-    ```
-
-    ```java
             city = "New york",
-    ```
-
-    ```java
             profession = "Software Engineer"
-    ```
-
-    ```java
         )
-    ```
-
-    ```java
         val userTwo = UserInformationModel(
-    ```
-
-    ```java
             id = 2,
-    ```
-
-    ```java
             firstName = "Mary",
-    ```
-
-    ```java
             lastName = "Simba",
-    ```
-
-    ```java
             dateOfBirth = 9121989,
-    ```
-
-    ```java
             gender = "Female",
-    ```
-
-    ```java
             city = "New york",
-    ```
-
-    ```java
             profession = "Senior Android Engineer"
-    ```
-
-    ```java
         )
-    ```
-
-    ```java
         userInformationDao.insertUserInformation(userOne)
-    ```
-
-    ```java
         userInformationDao.insertUserInformation(userTwo)
-    ```
-
-    ```java
         userInformationDao.deleteUserInformation(userTwo)
-    ```
-
-    ```java
         val latch = CountDownLatch(1)
-    ```
-
-    ```java
         val job = async(Dispatchers.IO) {
-    ```
-
-    ```java
             userInformationDao.loadAllUserInformation()
-    ```
-
-    ```java
                 .collect {
-    ```
-
-    ```java
                     assertThat(it).doesNotContain(userTwo)
-    ```
-
-    ```java
                     latch.countDown()
-    ```
-
-    ```java
                 }
-    ```
-
-    ```java
         }
-    ```
-
-    ```java
         latch.await()
-    ```
-
-    ```java
         job.cancelAndJoin()
-    ```
-
-    ```java
     }
     ```
 

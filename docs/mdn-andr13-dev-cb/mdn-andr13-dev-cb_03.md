@@ -60,17 +60,8 @@ android {
 
     ```java
     plugins {
-    ```
-
-    ```java
         id 'com.google.dagger.Hilt.android' version '2.44'
-    ```
-
-    ```java
     apply false
-    ```
-
-    ```java
     }
     ```
 
@@ -78,37 +69,13 @@ android {
 
     ```java
     plugins {
-    ```
-
-    ```java
         id 'kotlin-kapt'
-    ```
-
-    ```java
         id 'dagger.Hilt.android.plugin'
-    ```
-
-    ```java
     }
-    ```
-
-    ```java
     dependencies {
-    ```
-
-    ```java
         implementation "com.google.dagger:Hilt-
-    ```
-
-    ```java
             android:2.44"
-    ```
-
-    ```java
         kapt "com.google.dagger:Hilt-compiler:2.44"
-    ```
-
-    ```java
     }
     ```
 
@@ -116,9 +83,6 @@ android {
 
     ```java
     @HiltAndroidApp
-    ```
-
-    ```java
     class LoginApp : Application()
     ```
 
@@ -126,13 +90,7 @@ android {
 
     ```java
     <application
-    ```
-
-    ```java
         android:name=".LoginApp"
-    ```
-
-    ```java
       ...
     ```
 
@@ -140,13 +98,7 @@ android {
 
     ```java
     @AndroidEntryPoint
-    ```
-
-    ```java
     class MainActivity : ComponentActivity() {
-    ```
-
-    ```java
       ...
     ```
 
@@ -226,13 +178,7 @@ Jetpack Compose 使用单向数据流设计模式；这意味着数据或状态�
 
     ```java
     @HiltViewModel
-    ```
-
-    ```java
     class LoginViewModel @Inject constructor(
-    ```
-
-    ```java
     ): ViewModel(){. . .}
     ```
 
@@ -240,17 +186,8 @@ Jetpack Compose 使用单向数据流设计模式；这意味着数据或状态�
 
     ```java
     @HiltViewModel
-    ```
-
-    ```java
     class LoginViewModel @Inject constructor(
-    ```
-
-    ```java
         stateHandle: SavedStateHandle
-    ```
-
-    ```java
     ) : ViewModel() {...}
     ```
 
@@ -258,41 +195,14 @@ Jetpack Compose 使用单向数据流设计模式；这意味着数据或状态�
 
     ```java
     data class AuthenticationState(
-    ```
-
-    ```java
         val userName: String = "",
-    ```
-
-    ```java
         val password: String = "",
-    ```
-
-    ```java
         val loading: Boolean = false,
-    ```
-
-    ```java
         var togglePasswordVisibility: Boolean = true
-    ```
-
-    ```java
     ) {
-    ```
-
-    ```java
         companion object {
-    ```
-
-    ```java
             val EMPTY_STATE = AuthenticationState()
-    ```
-
-    ```java
         }
-    ```
-
-    ```java
     }
     ```
 
@@ -300,29 +210,11 @@ Jetpack Compose 使用单向数据流设计模式；这意味着数据或状态�
 
     ```java
     class MutableSavedState<T>(
-    ```
-
-    ```java
         private val savedStateHandle: SavedStateHandle,
-    ```
-
-    ```java
         private val key: String,
-    ```
-
-    ```java
         defValue: T,
-    ```
-
-    ```java
     ) {
-    ```
-
-    ```java
      . . .
-    ```
-
-    ```java
     }
     ```
 
@@ -330,33 +222,12 @@ Jetpack Compose 使用单向数据流设计模式；这意味着数据或状态�
 
     ```java
     private val username = MutableSavedState(
-    ```
-
-    ```java
         stateHandle,
-    ```
-
-    ```java
         "UserName",
-    ```
-
-    ```java
         defValue = ""
-    ```
-
-    ```java
     )
-    ```
-
-    ```java
     fun userNameChanged(userName: String){
-    ```
-
-    ```java
         username.value = userName
-    ```
-
-    ```java
     }
     ```
 
@@ -366,85 +237,25 @@ Jetpack Compose 使用单向数据流设计模式；这意味着数据或状态�
 
     ```java
     fun <T1, T2, T3, T4, T5, T6, R> combine(
-    ```
-
-    ```java
         flow: Flow<T1>,
-    ```
-
-    ```java
         flow2: Flow<T2>,
-    ```
-
-    ```java
         flow3: Flow<T3>,
-    ```
-
-    ```java
         flow4: Flow<T4>,
-    ```
-
-    ```java
         flow5: Flow<T5>,
-    ```
-
-    ```java
         flow6: Flow<T6>,
-    ```
-
-    ```java
         transform: suspend (T1, T2, T3, T4, T5, T6) -> R
-    ```
-
-    ```java
     ): Flow<R> = combine(
-    ```
-
-    ```java
             combine(flow, flow2, flow3, ::Triple),
-    ```
-
-    ```java
             combine(flow4, flow5, flow6, ::Triple)
-    ```
-
-    ```java
     ) { t1, t2 ->
-    ```
-
-    ```java
         transform(
-    ```
-
-    ```java
             t1.first,
-    ```
-
-    ```java
             t1.second,
-    ```
-
-    ```java
             t1.third,
-    ```
-
-    ```java
             t2.first,
-    ```
-
-    ```java
             t2.second,
-    ```
-
-    ```java
             t2.third
-    ```
-
-    ```java
         )
-    ```
-
-    ```java
     }
     ```
 
@@ -470,17 +281,8 @@ val state = combineFlows(
 
     ```java
     .stateIn(
-    ```
-
-    ```java
        coroutineScope = viewModelScope + dispatchers.main,
-    ```
-
-    ```java
        initialValue = AuthenticationState.EMPTY_STATE
-    ```
-
-    ```java
     )
     ```
 
@@ -490,33 +292,12 @@ val state = combineFlows(
 
     ```java
     fun <T> Flow<T>.stateIn(
-    ```
-
-    ```java
         coroutineScope: CoroutineScope,
-    ```
-
-    ```java
         initialValue: T
-    ```
-
-    ```java
     ): StateFlow<T> = stateIn(
-    ```
-
-    ```java
         scope = coroutineScope,
-    ```
-
-    ```java
         started = SharingStarted.WhileSubscribed(5000),
-    ```
-
-    ```java
         initialValue = initialValue
-    ```
-
-    ```java
     )
     ```
 
@@ -524,65 +305,20 @@ val state = combineFlows(
 
     ```java
     class SampleLoginDispatchers(
-    ```
-
-    ```java
         val default: CoroutineDispatcher,
-    ```
-
-    ```java
         val main: CoroutineDispatcher,
-    ```
-
-    ```java
         val io: CoroutineDispatcher
-    ```
-
-    ```java
     ) {
-    ```
-
-    ```java
         companion object {
-    ```
-
-    ```java
             fun createTestDispatchers(coroutineDispatcher:
-    ```
-
-    ```java
             CoroutineDispatcher): SampleLoginDispatchers {
-    ```
-
-    ```java
                 return SampleLoginDispatchers(
-    ```
-
-    ```java
                     default = coroutineDispatcher,
-    ```
-
-    ```java
                     main = coroutineDispatcher,
-    ```
-
-    ```java
                     io = coroutineDispatcher
-    ```
-
-    ```java
                 )
-    ```
-
-    ```java
             }
-    ```
-
-    ```java
         }
-    ```
-
-    ```java
     }
     ```
 
@@ -592,53 +328,17 @@ val state = combineFlows(
 
     ```java
     @Module
-    ```
-
-    ```java
     @InstallIn(SingletonComponent::class)
-    ```
-
-    ```java
     object AppModule {
-    ```
-
-    ```java
         @Provides
-    ```
-
-    ```java
         fun provideSlimeDispatchers():
-    ```
-
-    ```java
         SampleLoginDispatchers {
-    ```
-
-    ```java
             return SampleLoginDispatchers(
-    ```
-
-    ```java
             default = Dispatchers.Default,
-    ```
-
-    ```java
             main = Dispatchers.Main,
-    ```
-
-    ```java
             io = Dispatchers.IO
-    ```
-
-    ```java
             )
-    ```
-
-    ```java
         }
-    ```
-
-    ```java
     }
     ```
 
@@ -646,125 +346,35 @@ val state = combineFlows(
 
     ```java
     @Composable
-    ```
-
-    ```java
     fun LoginContent(
-    ```
-
-    ```java
         modifier: Modifier = Modifier,
-    ```
-
-    ```java
         uiState: AuthenticationState,
-    ```
-
-    ```java
         onUsernameUpdated: (String) -> Unit,
-    ```
-
-    ```java
         onPasswordUpdated: (String) -> Unit,
-    ```
-
-    ```java
         onLogin: () -> Unit,
-    ```
-
-    ```java
         passwordToggleVisibility: (Boolean) -> Unit
-    ```
-
-    ```java
     ){
-    ```
-
-    ```java
     . . .
-    ```
-
-    ```java
     UserNameField(authState = uiState, onValueChanged =
-    ```
-
-    ```java
     onUsernameUpdated)
-    ```
-
-    ```java
     PasswordInputField(
-    ```
-
-    ```java
         text = stringResource(id = R.string.password),
-    ```
-
-    ```java
         authState = uiState,
-    ```
-
-    ```java
         onValueChanged = onPasswordUpdated,
-    ```
-
-    ```java
         passwordToggleVisibility =
-    ```
-
-    ```java
             passwordToggleVisibility
-    ```
-
-    ```java
     )
-    ```
-
-    ```java
     LoginButton(
-    ```
-
-    ```java
         text = stringResource(id = R.string.sign_in),
-    ```
-
-    ```java
         enabled = if (uiState.isValidForm()) {
-    ```
-
-    ```java
             !uiState.loading
-    ```
-
-    ```java
         } else {
-    ```
-
-    ```java
             false
-    ```
-
-    ```java
         },
-    ```
-
-    ```java
         onLoginClicked = {
-    ```
-
-    ```java
             onLogin.invoke()
-    ```
-
-    ```java
         },
-    ```
-
-    ```java
         isLoading = uiState.loading
-    ```
-
-    ```java
     ). . .}
     ```
 
@@ -772,77 +382,23 @@ val state = combineFlows(
 
     ```java
     @Composable
-    ```
-
-    ```java
     fun LoginContentScreen(
-    ```
-
-    ```java
         loginViewModel: LoginViewModel,
-    ```
-
-    ```java
         onRegisterNavigateTo: () -> Unit
-    ```
-
-    ```java
     ) {
-    ```
-
-    ```java
         val viewState by
-    ```
-
-    ```java
             loginViewModel.state.collectAsState()
-    ```
-
-    ```java
         LoginContent(
-    ```
-
-    ```java
             uiState = viewState,
-    ```
-
-    ```java
             onUsernameUpdated =
-    ```
-
-    ```java
                 loginViewModel::userNameChanged,
-    ```
-
-    ```java
              onPasswordUpdated =
-    ```
-
-    ```java
                 loginViewModel::passwordChanged,
-    ```
-
-    ```java
              onLogin = loginViewModel::login,
-    ```
-
-    ```java
              passwordToggleVisibility =
-    ```
-
-    ```java
                  loginViewModel::passwordVisibility,
-    ```
-
-    ```java
              onRegister = onRegisterNavigateTo
-    ```
-
-    ```java
         )
-    ```
-
-    ```java
     }
     ```
 
@@ -912,17 +468,8 @@ Jetpack Compose 使用单向数据流设计模式。这意味着数据或状态�
 
     ```java
     <androidx.Compose.ui.platform.ComposeView
-    ```
-
-    ```java
         android:id="@+id/alert_dialog"
-    ```
-
-    ```java
         android:layout_width="match_parent"
-    ```
-
-    ```java
         android:layout_height="match_parent"/>
     ```
 
@@ -930,13 +477,7 @@ Jetpack Compose 使用单向数据流设计模式。这意味着数据或状态�
 
     ```java
     buildFeatures{
-    ```
-
-    ```java
         viewBinding true
-    ```
-
-    ```java
     }
     ```
 
@@ -944,57 +485,18 @@ Jetpack Compose 使用单向数据流设计模式。这意味着数据或状态�
 
     ```java
     class MainActivity : AppCompatActivity() {
-    ```
-
-    ```java
         private lateinit var activityBinding:
-    ```
-
-    ```java
         ActivityMainBinding
-    ```
-
-    ```java
         override fun onCreate(savedInstanceState: Bundle?)
-    ```
-
-    ```java
         {
-    ```
-
-    ```java
             super.onCreate(savedInstanceState)
-    ```
-
-    ```java
             activityBinding =
-    ```
-
-    ```java
                ActivityMainBinding.inflate(layoutInflater)
-    ```
-
-    ```java
             setContentView(activityBinding.root)
-    ```
-
-    ```java
             activityBinding.alertDialog.setContent {
-    ```
-
-    ```java
                 GreetingAlertDialog()
-    ```
-
-    ```java
             }
-    ```
-
-    ```java
         }
-    ```
-
-    ```java
     }
     ```
 
@@ -1002,69 +504,21 @@ Jetpack Compose 使用单向数据流设计模式。这意味着数据或状态�
 
     ```java
     @Composable
-    ```
-
-    ```java
     fun SimpleAlertDialog() {
-    ```
-
-    ```java
         AlertDialog(
-    ```
-
-    ```java
             onDismissRequest = { },
-    ```
-
-    ```java
             confirmButton = {
-    ```
-
-    ```java
                 TextButton(onClick = {})
-    ```
-
-    ```java
                 { Text(text = "OK") }
-    ```
-
-    ```java
             },
-    ```
-
-    ```java
             dismissButton = {
-    ```
-
-    ```java
                 TextButton(onClick = {})
-    ```
-
-    ```java
                 { Text(text = "OK") }
-    ```
-
-    ```java
             },
-    ```
-
-    ```java
             title = { Text(text = "Hello") },
-    ```
-
-    ```java
             text = { Text(text = "Hello, and thank you for
-    ```
-
-    ```java
             being part of the Android community") }
-    ```
-
-    ```java
         )
-    ```
-
-    ```java
     }
     ```
 
@@ -1076,41 +530,14 @@ Jetpack Compose 使用单向数据流设计模式。这意味着数据或状态�
 
     ```java
     class ComposeAlertDialogComponent @JvmOverloads constructor(
-    ```
-
-    ```java
         context: Context,
-    ```
-
-    ```java
         attrs: AttributeSet? = null,
-    ```
-
-    ```java
         defStyle: Int = 0
-    ```
-
-    ```java
     ) : AbstractComposeView(context, attrs, defStyle) {
-    ```
-
-    ```java
             @Composable
-    ```
-
-    ```java
         override fun Content() {
-    ```
-
-    ```java
             GreetingAlertDialog()
-    ```
-
-    ```java
         }
-    ```
-
-    ```java
     }
     ```
 
@@ -1150,41 +577,14 @@ Jetpack Compose 仍然非常新，许多公司开始使用它。此外，谷歌�
 
     ```java
     @Composable
-    ```
-
-    ```java
     fun UserDetails(
-    ```
-
-    ```java
         name: String,
-    ```
-
-    ```java
         gender: String,
-    ```
-
-    ```java
     ) {
-    ```
-
-    ```java
         Box() {
-    ```
-
-    ```java
             Text(name)
-    ```
-
-    ```java
             Spacer()
-    ```
-
-    ```java
             Text(gender)
-    ```
-
-    ```java
         }}
     ```
 
@@ -1284,37 +684,13 @@ Compose 团队正在推出 Jetpack Compose Composition Tracing，这是第一个
 
     ```java
     object TestTags {
-    ```
-
-    ```java
         object LoginContent {
-    ```
-
-    ```java
             const val SIGN_IN_BUTTON = "sign_in_button"
-    ```
-
-    ```java
             const val LOGO_IMAGE = "logo_image_button"
-    ```
-
-    ```java
             const val ANDROID_TEXT = "community_text"
-    ```
-
-    ```java
             const val USERNAME_FIELD = "username_fields"
-    ```
-
-    ```java
             const val PASSWORD_FIELD = "password_fields"
-    ```
-
-    ```java
         }
-    ```
-
-    ```java
     }
     ```
 
@@ -1322,25 +698,10 @@ Compose 团队正在推出 Jetpack Compose Composition Tracing，这是第一个
 
     ```java
     Image(
-    ```
-
-    ```java
         modifier = modifier.testTag(LOGO_IMAGE),
-    ```
-
-    ```java
         painter = painterResource(id =
-    ```
-
-    ```java
             R.drawable.ic_launcher_foreground),
-    ```
-
-    ```java
         contentDescription = "Logo"
-    ```
-
-    ```java
     )
     ```
 
@@ -1348,9 +709,6 @@ Compose 团队正在推出 Jetpack Compose Composition Tracing，这是第一个
 
     ```java
     @get:Rule
-    ```
-
-    ```java
     val ComposeRuleTest = createAndroidComposeRule<MainActivity>()
     ```
 
@@ -1358,29 +716,11 @@ Compose 团队正在推出 Jetpack Compose Composition Tracing，这是第一个
 
     ```java
     private fun initCompose() {
-    ```
-
-    ```java
         ComposeRuleTest.activity.setContent {
-    ```
-
-    ```java
             SampleLoginTheme {
-    ```
-
-    ```java
                 LoginContent()
-    ```
-
-    ```java
             }
-    ```
-
-    ```java
         }
-    ```
-
-    ```java
     }
     ```
 
@@ -1388,49 +728,16 @@ Compose 团队正在推出 Jetpack Compose Composition Tracing，这是第一个
 
     ```java
     @Test
-    ```
-
-    ```java
     fun assertSignInButtonIsDisplayed(){
-    ```
-
-    ```java
         initCompose()
-    ```
-
-    ```java
         ComposeRuleTest.onNodeWithTag(SIGN_IN_BUTTON,
-    ```
-
-    ```java
         true).assertIsDisplayed()
-    ```
-
-    ```java
     }
-    ```
-
-    ```java
     @Test
-    ```
-
-    ```java
     fun assertUserInputFieldIsDisplayed(){
-    ```
-
-    ```java
         initCompose()
-    ```
-
-    ```java
         ComposeRuleTest.onNodeWithTag(USERNAME_FIELD,
-    ```
-
-    ```java
         true).assertIsDisplayed()
-    ```
-
-    ```java
     }
     ```
 
@@ -1494,25 +801,10 @@ UI 部分或元素可以是从单个 Composable 到全屏的任何内容。如�
 
     ```java
     repositories {
-    ```
-
-    ```java
       mavenCentral()
-    ```
-
-    ```java
     }
-    ```
-
-    ```java
     dependencies {
-    ```
-
-    ```java
       testImplementation 'app.cash.turbine:turbine:0.x.x'
-    ```
-
-    ```java
     }
     ```
 
@@ -1520,49 +812,16 @@ UI 部分或元素可以是从单个 Composable 到全屏的任何内容。如�
 
     ```java
     class LoginViewModelTest {
-    ```
-
-    ```java
        private lateinit var loginViewModel: LoginViewModel
-    ```
-
-    ```java
        @Before
-    ```
-
-    ```java
        fun setUp(){
-    ```
-
-    ```java
           loginViewModel = LoginViewModel(
-    ```
-
-    ```java
              dispatchers =
-    ```
-
-    ```java
              SampleLoginDispatchers.createTestDispatchers(
-    ```
-
-    ```java
              UnconfinedTestDispatcher()),
-    ```
-
-    ```java
              stateHandle = SavedStateHandle()
-    ```
-
-    ```java
           )
-    ```
-
-    ```java
        }
-    ```
-
-    ```java
     }
     ```
 
@@ -1572,9 +831,6 @@ UI 部分或元素可以是从单个 Composable 到全屏的任何内容。如�
 
     ```java
     @Test
-    ```
-
-    ```java
     fun `test authentication state changes`() = runTest {...}
     ```
 
@@ -1582,65 +838,20 @@ UI 部分或元素可以是从单个 Composable 到全屏的任何内容。如�
 
     ```java
     @Test
-    ```
-
-    ```java
     fun `test authentication state changes`() = runTest {
-    ```
-
-    ```java
         loginViewModel.userNameChanged("Madona")
-    ```
-
-    ```java
         loginViewModel.passwordChanged("home")
-    ```
-
-    ```java
         loginViewModel.passwordVisibility(true)
-    ```
-
-    ```java
         loginViewModel.state.test {
-    ```
-
-    ```java
             val stateChange = awaitItem()
-    ```
-
-    ```java
             Truth.assertThat(stateChange).isEqualTo(
-    ```
-
-    ```java
                 AuthenticationState(
-    ```
-
-    ```java
                     userName = "Madona",
-    ```
-
-    ```java
                     password = "home",
-    ```
-
-    ```java
                     togglePasswordVisibility = true
-    ```
-
-    ```java
                 )
-    ```
-
-    ```java
             )
-    ```
-
-    ```java
         }
-    ```
-
-    ```java
     }
     ```
 

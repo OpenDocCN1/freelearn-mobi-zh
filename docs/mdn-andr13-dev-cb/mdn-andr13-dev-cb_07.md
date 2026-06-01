@@ -66,9 +66,6 @@
 
     ```java
     implementation "androidx.work:work-runtime-ktx:
-    ```
-
-    ```java
     version-number"
     ```
 
@@ -78,89 +75,26 @@
 
     ```java
     private fun createCustomNotificationChannel() {
-    ```
-
-    ```java
         if (Build.VERSION.SDK_INT >=
-    ```
-
-    ```java
         Build.VERSION_CODES.O) {
-    ```
-
-    ```java
             val name = getString(
-    ```
-
-    ```java
                 R.string.notification_channel)
-    ```
-
-    ```java
             val notificationDescription = getString(
-    ```
-
-    ```java
                 R.string.notification_description)
-    ```
-
-    ```java
             val importance =
-    ```
-
-    ```java
                 NotificationManager.IMPORTANCE_DEFAULT
-    ```
-
-    ```java
             val channel = NotificationChannel(CHANNEL_ID,
-    ```
-
-    ```java
             name, importance).apply {
-    ```
-
-    ```java
     description = notificationDescription
-    ```
-
-    ```java
             }
-    ```
-
-    ```java
             // Register the channel with the system
-    ```
-
-    ```java
             val notificationManager: NotificationManager =
-    ```
-
-    ```java
                 getSystemService(
-    ```
-
-    ```java
                     Context.NOTIFICATION_SERVICE) as
-    ```
-
-    ```java
                         NotificationManager
-    ```
-
-    ```java
             notificationManager.createNotificationChannel(
-    ```
-
-    ```java
                 channel)
-    ```
-
-    ```java
         }
-    ```
-
-    ```java
     }
     ```
 
@@ -180,17 +114,8 @@
 
     ```java
     val ourConstraints = Constraints.Builder()
-    ```
-
-    ```java
         .setRequiredNetworkType(NetworkType.CONNECTED)
-    ```
-
-    ```java
         .setRequiresBatteryNotLow(false)
-    ```
-
-    ```java
         .build()
     ```
 
@@ -198,9 +123,6 @@
 
     ```java
     val data = Data.Builder()
-    ```
-
-    ```java
     data.putString(ENDPOINT_REQUEST, endPoint)
     ```
 
@@ -208,25 +130,10 @@
 
     ```java
     val job =
-    ```
-
-    ```java
         PeriodicWorkRequestBuilder<GetDataWorker>(20,
-    ```
-
-    ```java
             TimeUnit.MINUTES)
-    ```
-
-    ```java
         .setConstraints(ourConstraints)
-    ```
-
-    ```java
         .setInputData(data.build())
-    ```
-
-    ```java
         .build()
     ```
 
@@ -234,9 +141,6 @@
 
     ```java
     workManagerInstance
-    ```
-
-    ```java
         .enqueue(work)
     ```
 
@@ -244,77 +148,23 @@
 
     ```java
     @HiltWorker
-    ```
-
-    ```java
     class GetDataWorker @AssistedInject constructor(
-    ```
-
-    ```java
         @Assisted context: Context,
-    ```
-
-    ```java
         @Assisted workerParameters: WorkerParameters,
-    ```
-
-    ```java
         private val viewModel: NotificationViewModel
-    ```
-
-    ```java
     ) : CoroutineWorker(context, workerParameters) {
-    ```
-
-    ```java
         override suspend fun doWork(): Result {
-    ```
-
-    ```java
             val ourEndPoint = inputData.getString(
-    ```
-
-    ```java
                 NotificationConstants.ENDPOINT_REQUEST)
-    ```
-
-    ```java
             if (endPoint != null) {
-    ```
-
-    ```java
                 getData(endPoint)
-    ```
-
-    ```java
             }
-    ```
-
-    ```java
             val dataToOutput = Data.Builder()
-    ```
-
-    ```java
                 .putString(
-    ```
-
-    ```java
                   NotificationConstants.NOTIFICATION_DATA,
-    ```
-
-    ```java
                   "Data")
-    ```
-
-    ```java
                 .build()
-    ```
-
-    ```java
             return Result.success(dataToOutput)
-    ```
-
-    ```java
         }
     ```
 
@@ -324,85 +174,25 @@
 
     ```java
     val notificationIntent = Intent(this, NotifyUser::class.java).apply {
-    ```
-
-    ```java
     flags = Intent.FLAG_ACTIVITY_NEW_TASK or
-    ```
-
-    ```java
             Intent.FLAG_ACTIVITY_CLEAR_TASK
-    ```
-
-    ```java
     }
-    ```
-
-    ```java
     notificationIntent.putExtra(NOTIFICATION_EXTRA, true)
-    ```
-
-    ```java
     notificationIntent.putExtra(NOTIFICATION_ID, notificationId)
-    ```
-
-    ```java
     val notifyPendingIntent = PendingIntent.getActivity(
-    ```
-
-    ```java
         this, 0, notificationIntent,
-    ```
-
-    ```java
         PendingIntent.FLAG_UPDATE_CURRENT
-    ```
-
-    ```java
     )
-    ```
-
-    ```java
     val builder = NotificationCompat
-    ```
-
-    ```java
         .Builder(context, Channel_ID_DEFAULT)
-    ```
-
-    ```java
         .setSmallIcon(notificationImage)
-    ```
-
-    ```java
         .setContentTitle(notificationTitle)
-    ```
-
-    ```java
         .setContentText(notificationContent)
-    ```
-
-    ```java
         .setPriority(NotificationCompat.PRIORITY_HIGH)
-    ```
-
-    ```java
         .setContentIntent(notifyPendingIntent)
-    ```
-
-    ```java
         .setAutoCancel(true)
-    ```
-
-    ```java
     with(NotificationManagerCompat.from(context)) {
-    ```
-
-    ```java
         notify(notificationId, builder.build())
-    ```
-
-    ```java
     }
     ```
 
@@ -410,37 +200,13 @@
 
     ```java
     private fun verifyIntent(intent: Intent?) {
-    ```
-
-    ```java
         intent?.let {
-    ```
-
-    ```java
         if (it.hasExtra(
-    ```
-
-    ```java
                NotificationConstants.NOTIFICATION_EXTRA)){
-    ```
-
-    ```java
                it.getStringExtra(
-    ```
-
-    ```java
                NotificationConstants.NOTIFICATION_ID)
-    ```
-
-    ```java
             }
-    ```
-
-    ```java
         }
-    ```
-
-    ```java
     }
     ```
 
@@ -448,17 +214,8 @@
 
     ```java
     override fun onResume() {
-    ```
-
-    ```java
         super.onResume()
-    ```
-
-    ```java
         verifyIntent(intent)
-    ```
-
-    ```java
     }
     ```
 
@@ -502,9 +259,6 @@
 
     ```java
     Result
-    ```
-
-    ```java
         SUCCESS, FAILURE, RETRY
     ```
 
@@ -514,65 +268,20 @@
 
     ```java
     override suspend fun doWork(): Result {
-    ```
-
-    ```java
         val file = inputData.getString(
-    ```
-
-    ```java
             FileParameters.KEY_FILE_NAME) ?: ""
-    ```
-
-    ```java
         if (file.isEmpty()){
-    ```
-
-    ```java
             Result.failure()
-    ```
-
-    ```java
         }
-    ```
-
-    ```java
         val uri = getSavedFileUri(fileName = file,
-    ```
-
-    ```java
             context = context)
-    ```
-
-    ```java
         return if (uri != null){
-    ```
-
-    ```java
             Result.success(workDataOf(
-    ```
-
-    ```java
                 FileParameters.KEY_FILE_URI to
-    ```
-
-    ```java
                     uri.toString()))
-    ```
-
-    ```java
         }else{
-    ```
-
-    ```java
             Result.failure()
-    ```
-
-    ```java
         }
-    ```
-
-    ```java
     }
     ```
 
@@ -580,65 +289,20 @@
 
     ```java
     when (state) {
-    ```
-
-    ```java
         WorkInfo.State.SUCCEEDED -> {
-    ```
-
-    ```java
             success(
-    ```
-
-    ```java
                 //do something
-    ```
-
-    ```java
             )
-    ```
-
-    ```java
         }
-    ```
-
-    ```java
         WorkInfo.State.FAILED -> {
-    ```
-
-    ```java
             failed("Downloading failed!")
-    ```
-
-    ```java
         }
-    ```
-
-    ```java
         WorkInfo.State.RUNNING -> {
-    ```
-
-    ```java
             running()
-    ```
-
-    ```java
         }
-    ```
-
-    ```java
         else -> {
-    ```
-
-    ```java
             failed("Something went wrong")
-    ```
-
-    ```java
         }
-    ```
-
-    ```java
     }
     ```
 
@@ -648,9 +312,6 @@
 
     ```java
     WorkManager.enqueueUniqueWork()
-    ```
-
-    ```java
     WorkManager.enqueueUniquePeriodicWork()
     ```
 
@@ -690,25 +351,10 @@
 
     ```java
     WorkManager.initialize(
-    ```
-
-    ```java
         context,
-    ```
-
-    ```java
         Configuration.Builder()
-    ```
-
-    ```java
             .setExecutor(Executors.newFixedThreadPool(
-    ```
-
-    ```java
                 CONSTANT_THREAD_POOL_INT))
-    ```
-
-    ```java
             .build())
     ```
 
@@ -716,53 +362,17 @@
 
     ```java
     class GetFiles(context: Context, params: WorkerParameters) : Worker(context, params) {
-    ```
-
-    ```java
         override fun doWork(): ListenableWorker.Result {
-    ```
-
-    ```java
             repeat(20) {
-    ```
-
-    ```java
                 try {
-    ```
-
-    ```java
                     downloadSynchronously("Your Link")
-    ```
-
-    ```java
                 } catch (e: IOException) {
-    ```
-
-    ```java
                     return
-    ```
-
-    ```java
                         ListenableWorker.Result.failure()
-    ```
-
-    ```java
                 }
-    ```
-
-    ```java
             }
-    ```
-
-    ```java
             return ListenableWorker.Result.success()
-    ```
-
-    ```java
         }
-    ```
-
-    ```java
     }
     ```
 
@@ -770,57 +380,18 @@
 
     ```java
         override fun doWork(): ListenableWorker.Result {
-    ```
-
-    ```java
             repeat(20) {
-    ```
-
-    ```java
                 if (isStopped) {
-    ```
-
-    ```java
                     break
-    ```
-
-    ```java
                 }
-    ```
-
-    ```java
                 try {
-    ```
-
-    ```java
                     downloadSynchronously("Your Link")
-    ```
-
-    ```java
                 } catch (e: IOException) {
-    ```
-
-    ```java
                     return
-    ```
-
-    ```java
                         ListenableWorker.Result.failure()
-    ```
-
-    ```java
                 }
-    ```
-
-    ```java
             }
-    ```
-
-    ```java
             return ListenableWorker.Result.success()
-    ```
-
-    ```java
         }
     ```
 
@@ -866,21 +437,9 @@
 
     ```java
     WorkManager.getInstance(context)
-    ```
-
-    ```java
         .beginWith(listOf(job1, job2, job3, job4))
-    ```
-
-    ```java
         .then(ourCache)
-    ```
-
-    ```java
         .then(upload)
-    ```
-
-    ```java
         .enqueue()
     ```
 
@@ -888,17 +447,8 @@
 
     ```java
     val ourCache: OneTimeWorkRequest = OneTimeWorkRequestBuilder<GetDataWorker>()
-    ```
-
-    ```java
         .setInputMerger(ArrayCreatingInputMerger::class)
-    ```
-
-    ```java
         .setConstraints(constraints)
-    ```
-
-    ```java
         .build()
     ```
 
@@ -948,45 +498,15 @@
 
     ```java
     class YourProjectJobService : JobService() {
-    ```
-
-    ```java
         override fun onStartJob(job: JobParameters):
-    ```
-
-    ```java
         Boolean {
-    ```
-
-    ```java
             // perform some job
-    ```
-
-    ```java
             return false
-    ```
-
-    ```java
         }
-    ```
-
-    ```java
         override fun onStopJob(job: JobParameters):
-    ```
-
-    ```java
         Boolean {
-    ```
-
-    ```java
             return false
-    ```
-
-    ```java
         }
-    ```
-
-    ```java
     }
     ```
 
@@ -994,41 +514,14 @@
 
     ```java
     class YourWorker(context: Context, params: WorkerParameters) :
-    ```
-
-    ```java
         ListenableWorker(context, params) {
-    ```
-
-    ```java
         override fun startWork():
-    ```
-
-    ```java
         ListenableFuture<ListenableWorker.Result> {
-    ```
-
-    ```java
             TODO("Not yet implemented")
-    ```
-
-    ```java
         }
-    ```
-
-    ```java
         override fun onStopped() {
-    ```
-
-    ```java
             TODO("Not yet implemented")
-    ```
-
-    ```java
         }
-    ```
-
-    ```java
     }
     ```
 
@@ -1036,13 +529,7 @@
 
     ```java
     val job = dispatcher.newJobBuilder()
-    ```
-
-    ```java
         ...
-    ```
-
-    ```java
         .build()
     ```
 
@@ -1074,13 +561,7 @@
 
     ```java
     <provider
-    ```
-
-    ```java
         ...
-    ```
-
-    ```java
         tools:node="remove"/>
     ```
 
@@ -1088,29 +569,11 @@
 
     ```java
     class App() : Application(), Configuration.Provider {
-    ```
-
-    ```java
         override fun getWorkManagerConfiguration() =
-    ```
-
-    ```java
             Configuration.Builder()
-    ```
-
-    ```java
                 .setMinimumLoggingLevel(
-    ```
-
-    ```java
                     android.util.Log.DEBUG)
-    ```
-
-    ```java
                 .build()
-    ```
-
-    ```java
     }
     ```
 
@@ -1144,65 +607,20 @@
 
     ```java
     @RunWith(AndroidJUnit4::class)
-    ```
-
-    ```java
     class BasicInstrumentationTest {
-    ```
-
-    ```java
         @Before
-    ```
-
-    ```java
         fun setup() {
-    ```
-
-    ```java
             val context =
-    ```
-
-    ```java
                 InstrumentationRegistry.getTargetContext()
-    ```
-
-    ```java
             val config = Configuration.Builder()
-    ```
-
-    ```java
                 .setMinimumLoggingLevel(Log.DEBUG)
-    ```
-
-    ```java
                 .setExecutor(SynchronousExecutor())
-    ```
-
-    ```java
                 .build()
-    ```
-
-    ```java
             // Initialize WorkManager for instrumentation
-    ```
-
-    ```java
                tests.
-    ```
-
-    ```java
             WorkManagerTestInitHelper.
-    ```
-
-    ```java
                 initializeTestWorkManager(context, config)
-    ```
-
-    ```java
         }
-    ```
-
-    ```java
     }
     ```
 
@@ -1210,33 +628,12 @@
 
     ```java
     class GetDataWorker(context: Context, parameters: WorkerParameters) : Worker(context, parameters) {
-    ```
-
-    ```java
         override fun doWork(): Result {
-    ```
-
-    ```java
             return when(endpoint) {
-    ```
-
-    ```java
                 0 -> Result.failure()
-    ```
-
-    ```java
                 else -> Result.success(dataOutput)
-    ```
-
-    ```java
             }
-    ```
-
-    ```java
         }
-    ```
-
-    ```java
     }
     ```
 
@@ -1244,37 +641,13 @@
 
     ```java
     @Test
-    ```
-
-    ```java
     @Throws(Exception::class)
-    ```
-
-    ```java
     fun testGetDataWorkerHasNoData() {
-    ```
-
-    ```java
         ...
-    ```
-
-    ```java
         val workInfo =
-    ```
-
-    ```java
             workManager.getWorkInfoById(request.id).get()
-    ```
-
-    ```java
         assertThat(workInfo.state,
-    ```
-
-    ```java
             `is`(WorkInfo.State.FAILED))
-    ```
-
-    ```java
     }
     ```
 

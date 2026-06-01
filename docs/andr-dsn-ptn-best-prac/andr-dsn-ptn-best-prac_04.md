@@ -535,10 +535,6 @@ res/layout-h720dp
         android:layout_marginTop="16dp" 
         android:text="@string/extra_text" 
         android:textAppearance="?android:attr/textAppearanceMedium" /> 
-
-    ```
-
-    ```kt
     <ImageView 
         android:id="@+id/image_view" 
         android:layout_width="match_parent" 

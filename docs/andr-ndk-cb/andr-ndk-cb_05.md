@@ -750,9 +750,6 @@ pointer_index = (action&AMOTION_EVENT_ACTION_POINTER_INDEX_MASK) >> AMOTION_EVEN
             }
           }
         }
-        ```
-
-        ```kt
         ASensorManager_destroyEventQueue(userData.sensorManager, userData.sensorEventQueue);
         }
 

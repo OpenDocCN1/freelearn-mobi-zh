@@ -597,9 +597,6 @@ OWASP GoatDroid project. Try reading through this, and think about the possible 
       <meta-data android:name="android.accounts.AccountAuthenticator"
       android:resource="@xml/authenticator" />
     </service>
-    ```
-
-    ```kt
     AndroidManifest.xml file of the Android LinkedIn application.
     ```
 

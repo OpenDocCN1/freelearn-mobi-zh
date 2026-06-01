@@ -54,37 +54,13 @@
 
     ```java
     @OptIn(ExperimentalContracts::class)
-    ```
-
-    ```java
     fun cityPosture(foldFeature: FoldingFeature?): Boolean {
-    ```
-
-    ```java
         contract { returns(true) implies (foldFeature !=
-    ```
-
-    ```java
             null) }
-    ```
-
-    ```java
         return foldFeature?.state ==
-    ```
-
-    ```java
             FoldingFeature.State.HALF_OPENED &&
-    ```
-
-    ```java
                 foldFeature.orientation ==
-    ```
-
-    ```java
                     FoldingFeature.Orientation.VERTICAL
-    ```
-
-    ```java
     }
     ```
 
@@ -94,33 +70,12 @@
 
     ```java
     @OptIn(ExperimentalContracts::class)
-    ```
-
-    ```java
     fun separating(foldFeature: FoldingFeature?): Boolean {
-    ```
-
-    ```java
         contract { returns(true) implies (foldFeature !=
-    ```
-
-    ```java
             null) }
-    ```
-
-    ```java
         return foldFeature?.state ==
-    ```
-
-    ```java
             FoldingFeature.State.FLAT &&
-    ```
-
-    ```java
                 foldFeature.isSeparating
-    ```
-
-    ```java
     }
     ```
 
@@ -128,41 +83,14 @@
 
     ```java
     sealed interface DevicePosture {
-    ```
-
-    ```java
         object NormalPosture : DevicePosture
-    ```
-
-    ```java
         data class CityPosture(
-    ```
-
-    ```java
             val hingePosition: Rect
-    ```
-
-    ```java
         ) : DevicePosture
-    ```
-
-    ```java
         data class Separating(
-    ```
-
-    ```java
             val hingePosition: Rect,
-    ```
-
-    ```java
             var orientation: FoldingFeature.Orientation
-    ```
-
-    ```java
         ) : DevicePosture
-    ```
-
-    ```java
     }
     ```
 
@@ -176,53 +104,17 @@
 
     ```java
     val postureStateFlow = WindowInfoTracker.getOrCreate(this).windowLayoutInfo(this)
-    ```
-
-    ```java
     . . .
-    ```
-
-    ```java
     when {
-    ```
-
-    ```java
         cityPosture(foldingFeature) ->
-    ```
-
-    ```java
           DevicePosture.CityPosture(foldingFeature.bounds)
-    ```
-
-    ```java
         separating(foldingFeature) ->
-    ```
-
-    ```java
           DevicePosture.Separating(foldingFeature.bounds,
-    ```
-
-    ```java
             foldingFeature.orientation)
-    ```
-
-    ```java
         else -> DevicePosture.NormalPosture
-    ```
-
-    ```java
     }
-    ```
-
-    ```java
         }
-    ```
-
-    ```java
     . . .
-    ```
-
-    ```java
         )
     ```
 
@@ -304,29 +196,11 @@ Jetpack Compose，一个用于构建优秀 UI 的声明式 UI 工具包，非常
 
     ```java
     @Composable
-    ```
-
-    ```java
     fun AndroidCommunity() {
-    ```
-
-    ```java
         ConstraintLayout {
-    ```
-
-    ```java
             val (title, aboutCommunity, AndroidImage) =
-    ```
-
-    ```java
                 createRefs()
-    ```
-
-    ```java
      . . .
-    ```
-
-    ```java
     }
     ```
 
@@ -336,57 +210,18 @@ Jetpack Compose，一个用于构建优秀 UI 的声明式 UI 工具包，非常
 
     ```java
     Text(
-    ```
-
-    ```java
         text = stringResource(id =
-    ```
-
-    ```java
             R.string.Android_community),
-    ```
-
-    ```java
         modifier = Modifier.constrainAs(title) {
-    ```
-
-    ```java
             top.linkTo(parent.top)
-    ```
-
-    ```java
             start.linkTo(parent.start)
-    ```
-
-    ```java
             end.linkTo(parent.end)
-    ```
-
-    ```java
         }
-    ```
-
-    ```java
             .padding(top = 12.dp),
-    ```
-
-    ```java
         style = TextStyle(
-    ```
-
-    ```java
             color = Color.Blue,
-    ```
-
-    ```java
             fontSize = 24.sp
-    ```
-
-    ```java
         )
-    ```
-
-    ```java
     )
     ```
 
@@ -416,49 +251,16 @@ Text(
 
     ```java
     Image(
-    ```
-
-    ```java
         painter = painterResource(id =
-    ```
-
-    ```java
             R.drawable.Android),
-    ```
-
-    ```java
         contentDescription = stringResource(id =
-    ```
-
-    ```java
             R.string.Android_image),
-    ```
-
-    ```java
         modifier = Modifier.constrainAs(AndroidImage) {
-    ```
-
-    ```java
             top.linkTo(aboutCommunity.bottom,
-    ```
-
-    ```java
                 margin = 16.dp)
-    ```
-
-    ```java
             centerHorizontallyTo(parent)
-    ```
-
-    ```java
         }
-    ```
-
-    ```java
     )
-    ```
-
-    ```java
     . . .
     ```
 
@@ -466,29 +268,11 @@ Text(
 
     ```java
     @Preview(showBackground = true)
-    ```
-
-    ```java
     @Composable
-    ```
-
-    ```java
     fun ShowAndroidCommunity() {
-    ```
-
-    ```java
         TravellerTheme() {
-    ```
-
-    ```java
             AndroidCommunity()
-    ```
-
-    ```java
         }
-    ```
-
-    ```java
     }
     ```
 
@@ -562,45 +346,15 @@ Text(
 
     ```java
     when (foldState.state) {
-    ```
-
-    ```java
         FoldableState.STATE_FLAT -> {
-    ```
-
-    ```java
             // Our Device is flat (unfolded)do something
-    ```
-
-    ```java
         }
-    ```
-
-    ```java
         FoldableState.STATE_HALF_OPENED -> {
-    ```
-
-    ```java
             //Our Device is partially folded. Do something
-    ```
-
-    ```java
         }
-    ```
-
-    ```java
         FoldableState.STATE_CLOSED -> {
-    ```
-
-    ```java
             //Our Device is fully folded do something
-    ```
-
-    ```java
         }
-    ```
-
-    ```java
     }
     ```
 
@@ -608,29 +362,11 @@ Text(
 
     ```java
     val isFolded = foldState.state == FoldableState.STATE_CLOSED
-    ```
-
-    ```java
     if (isFolded) {
-    ```
-
-    ```java
         // Create our layout for when the device is folded
-    ```
-
-    ```java
     } else {
-    ```
-
-    ```java
         // Create our layout for when the device is
-    ```
-
-    ```java
            unfolded
-    ```
-
-    ```java
     }
     ```
 
@@ -717,37 +453,13 @@ Compose 中的**材料主题**是由 Google 引入的设计系统，它提供了
 
     ```java
     @Composable
-    ```
-
-    ```java
     fun MyAppMaterialTheme(content: @Composable () -> Unit) {
-    ```
-
-    ```java
         MaterialTheme(
-    ```
-
-    ```java
             colorScheme = /**/,
-    ```
-
-    ```java
             typography = /**/,
-    ```
-
-    ```java
             shapes = /**/,
-    ```
-
-    ```java
             content = content
-    ```
-
-    ```java
         )
-    ```
-
-    ```java
     }
     ```
 
@@ -755,17 +467,8 @@ Compose 中的**材料主题**是由 Google 引入的设计系统，它提供了
 
     ```java
     @Composable
-    ```
-
-    ```java
     fun MyApp() {
-    ```
-
-    ```java
         MyAppMaterialTheme {}
-    ```
-
-    ```java
     }
     ```
 

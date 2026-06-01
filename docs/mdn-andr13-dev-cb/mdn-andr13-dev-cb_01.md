@@ -72,29 +72,11 @@ Android Studio 包括对 Kotlin、Java、C++和其他编程语言的支持，这
 
     ```java
     fun main() {
-    ```
-
-    ```java
         val stringToBeReversed = "Community"
-    ```
-
-    ```java
         println(reverseString(stringToBeReversed))
-    ```
-
-    ```java
     }
-    ```
-
-    ```java
     fun reverseString(stringToReverse: String): String {
-    ```
-
-    ```java
         return stringToReverse.reversed()
-    ```
-
-    ```java
     }
     ```
 
@@ -166,73 +148,22 @@ Android Studio 包括对 Kotlin、Java、C++和其他编程语言的支持，这
 
     ```java
     class MainActivity : ComponentActivity() {
-    ```
-
-    ```java
         override fun onCreate(savedInstanceState: Bundle?)
-    ```
-
-    ```java
         {
-    ```
-
-    ```java
             super.onCreate(savedInstanceState)
-    ```
-
-    ```java
             setContent {
-    ```
-
-    ```java
                 AndroidCommunityTheme {
-    ```
-
-    ```java
                     Surface(
-    ```
-
-    ```java
                         modifier = Modifier.fillMaxSize(),
-    ```
-
-    ```java
                         color =
-    ```
-
-    ```java
                         MaterialTheme.colors.background
-    ```
-
-    ```java
                     ) {
-    ```
-
-    ```java
                         Greeting("Hello, Android
-    ```
-
-    ```java
                                   Community")
-    ```
-
-    ```java
                     }
-    ```
-
-    ```java
                 }
-    ```
-
-    ```java
             }
-    ```
-
-    ```java
         }
-    ```
-
-    ```java
     }
     ```
 
@@ -240,25 +171,10 @@ Android Studio 包括对 Kotlin、Java、C++和其他编程语言的支持，这
 
     ```java
     @Composable
-    ```
-
-    ```java
     fun Greeting(name: String) {
-    ```
-
-    ```java
         Text(
-    ```
-
-    ```java
             text = name
-    ```
-
-    ```java
         )
-    ```
-
-    ```java
     }
     ```
 
@@ -268,17 +184,8 @@ Android Studio 包括对 Kotlin、Java、C++和其他编程语言的支持，这
 
     ```java
     @Preview(showBackground = true)
-    ```
-
-    ```java
     @Composable
-    ```
-
-    ```java
     fun DefaultPreview() {
-    ```
-
-    ```java
     }
     ```
 
@@ -360,37 +267,13 @@ Android Studio 是一个可靠且成熟的集成开发环境。因此，自 2014
 
     ```java
     Column(
-    ```
-
-    ```java
         modifier = Modifier
-    ```
-
-    ```java
             .fillMaxSize()
-    ```
-
-    ```java
             .wrapContentSize(Alignment.Center),
-    ```
-
-    ```java
         horizontalAlignment = Alignment.CenterHorizontally
-    ```
-
-    ```java
     ) {
-    ```
-
-    ```java
         Greeting("Hello, Android Community")
-    ```
-
-    ```java
       }
-    ```
-
-    ```java
     }
     ```
 
@@ -400,93 +283,27 @@ Android Studio 是一个可靠且成熟的集成开发环境。因此，自 2014
 
     ```java
     @Composable
-    ```
-
-    ```java
     fun SampleButton() {
-    ```
-
-    ```java
         Button(
-    ```
-
-    ```java
             onClick = { /*TODO*/ },
-    ```
-
-    ```java
             modifier = Modifier
-    ```
-
-    ```java
                 .fillMaxWidth()
-    ```
-
-    ```java
                 .padding(24.dp),
-    ```
-
-    ```java
             shape = RoundedCornerShape(20.dp),
-    ```
-
-    ```java
             border = BorderStroke(2.dp, Color.Blue),
-    ```
-
-    ```java
             colors = ButtonDefaults.buttonColors(
-    ```
-
-    ```java
                 contentColor = Color.Gray,
-    ```
-
-    ```java
                 backgroundColor = Color.White
-    ```
-
-    ```java
             )
-    ```
-
-    ```java
         ) {
-    ```
-
-    ```java
             Text(
-    ```
-
-    ```java
                 text = stringResource(id =
-    ```
-
-    ```java
                            R.string.click_me),
-    ```
-
-    ```java
                 fontSize = 14.sp,
-    ```
-
-    ```java
                 modifier = Modifier.padding(horizontal =
-    ```
-
-    ```java
                                30.dp, vertical = 6.dp)
-    ```
-
-    ```java
             )
-    ```
-
-    ```java
         }
-    ```
-
-    ```java
     }
     ```
 
@@ -504,37 +321,13 @@ Android Studio 是一个可靠且成熟的集成开发环境。因此，自 2014
 
     ```java
     Column(
-    ```
-
-    ```java
         modifier = Modifier
-    ```
-
-    ```java
             .fillMaxSize()
-    ```
-
-    ```java
             .wrapContentSize(Alignment.Center),
-    ```
-
-    ```java
         horizontalAlignment = Alignment.CenterHorizontally
-    ```
-
-    ```java
     ) {
-    ```
-
-    ```java
         Greeting("Hello, Android Community")
-    ```
-
-    ```java
         SampleButton()
-    ```
-
-    ```java
     }
     ```
 

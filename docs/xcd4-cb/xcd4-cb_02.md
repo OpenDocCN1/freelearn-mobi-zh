@@ -443,9 +443,6 @@
         [textField resignFirstResponder];
         return YES;
     }
-    ```
-
-    ```swift
     -(void) textFieldDidBeginEditing:(UITextField *)textField
     {
        lblInfo.text = @"TextField contents are being updated";

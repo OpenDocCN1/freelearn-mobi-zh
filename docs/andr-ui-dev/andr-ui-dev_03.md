@@ -299,9 +299,6 @@
 
     ```kt
     <TextView 
-    ```
-
-    ```kt
 
         android:gravity="left|top"
         android:textStyle="italic"
