@@ -1,6 +1,6 @@
 # 安卓 UI 开发
 
-> 原文：[`zh.annas-archive.org/md5/0C4D876AAF9D190F8124849256569042`](https://zh.annas-archive.org/md5/0C4D876AAF9D190F8124849256569042)
+> 原文：[Android user interface development ;quickly design and develop compelling user interfaces for your android applications: beginner's guide](https://zh.annas-archive.gl/md5/0C4D876AAF9D190F8124849256569042)
 > 
 > 译者：[飞龙](https://github.com/wizardforcel)
 > 

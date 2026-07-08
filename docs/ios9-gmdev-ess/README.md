@@ -1,6 +1,6 @@
 # IOS8 游戏开发精要
 
-> 原文：[`zh.annas-archive.org/md5/5679582944100e0edcae563cf220176d`](https://zh.annas-archive.org/md5/5679582944100e0edcae563cf220176d)
+> 原文：[iOS 9 Game Development Essentials](https://zh.annas-archive.gl/md5/5679582944100e0edcae563cf220176d)
 > 
 > 译者：[飞龙](https://github.com/wizardforcel)
 > 

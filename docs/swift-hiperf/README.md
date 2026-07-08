@@ -1,6 +1,6 @@
 # Swift 高性能指南
 
-> 原文：[`zh.annas-archive.org/md5/8d73e1345bcbb06820c0bc44a2f3332a`](https://zh.annas-archive.org/md5/8d73e1345bcbb06820c0bc44a2f3332a)
+> 原文：[Swift High Performance : Leverage Swift and Enhance Your Code to Take Your Applications to the Next Level](https://zh.annas-archive.gl/md5/8d73e1345bcbb06820c0bc44a2f3332a)
 > 
 > 译者：[飞龙](https://github.com/wizardforcel)
 > 

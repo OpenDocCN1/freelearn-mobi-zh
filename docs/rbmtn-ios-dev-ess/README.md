@@ -1,6 +1,6 @@
 # Rubymotion IOS 开发精要
 
-> 原文：[`zh.annas-archive.org/md5/af59fe311a6cd319c741a80361031ff0`](https://zh.annas-archive.org/md5/af59fe311a6cd319c741a80361031ff0)
+> 原文：[RubyMotion iOS development essentials : create apps that utilize iOS device capabilities without learning Objective-C](https://zh.annas-archive.gl/md5/af59fe311a6cd319c741a80361031ff0)
 > 
 > 译者：[飞龙](https://github.com/wizardforcel)
 > 

@@ -1,6 +1,6 @@
 # .NET MAUI 跨平台应用开发
 
-> 原文：[`zh.annas-archive.org/md5/f68f693541453541646c4b8b58abcd0a`](https://zh.annas-archive.org/md5/f68f693541453541646c4b8b58abcd0a)
+> 原文：[.NET MAUI Cross-Platform Application Development, 2nd Edition](https://zh.annas-archive.gl/md5/f68f693541453541646c4b8b58abcd0a)
 > 
 > 译者：[飞龙](https://github.com/wizardforcel)
 > 

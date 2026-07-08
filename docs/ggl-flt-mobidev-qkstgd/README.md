@@ -1,6 +1,6 @@
 # 谷歌 Flutter 移动开发快速启动指南
 
-> 原文：[`zh.annas-archive.org/md5/2ff865f719115aa08fbcf9d0c2b760d8`](https://zh.annas-archive.org/md5/2ff865f719115aa08fbcf9d0c2b760d8)
+> 原文：[Google Flutter Mobile Development Quick Start Guide : Get up and Running with IOS and Android Mobile App Development](https://zh.annas-archive.gl/md5/2ff865f719115aa08fbcf9d0c2b760d8)
 > 
 > 译者：[飞龙](https://github.com/wizardforcel)
 > 

@@ -1,6 +1,6 @@
 # 安卓异步编程第二版
 
-> 原文：[`zh.annas-archive.org/md5/c0428736fdd1c42d1336ce7235255473`](https://zh.annas-archive.org/md5/c0428736fdd1c42d1336ce7235255473)
+> 原文：[Asynchronous Android Programming - Second Edition](https://zh.annas-archive.gl/md5/c0428736fdd1c42d1336ce7235255473)
 > 
 > 译者：[飞龙](https://github.com/wizardforcel)
 > 

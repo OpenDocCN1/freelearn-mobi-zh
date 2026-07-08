@@ -1,6 +1,6 @@
 # 安卓 NDK 初学者指南第二版
 
-> 原文：[`zh.annas-archive.org/md5/A3DD702F9D1A87E6BE95B1711A85BCDE`](https://zh.annas-archive.org/md5/A3DD702F9D1A87E6BE95B1711A85BCDE)
+> 原文：[Android NDK: Beginner's Guide - Second Edition](https://zh.annas-archive.gl/md5/A3DD702F9D1A87E6BE95B1711A85BCDE)
 > 
 > 译者：[飞龙](https://github.com/wizardforcel)
 > 

@@ -1,6 +1,6 @@
 # 精通 Kotlin
 
-> 原文：[`zh.annas-archive.org/md5/c45f33a5c3e2fa673e835f4a0e69219c`](https://zh.annas-archive.org/md5/c45f33a5c3e2fa673e835f4a0e69219c)
+> 原文：[Mastering Kotlin : Learn Advanced Kotlin Programming Techniques to Build Apps for Android, IOS, and the Web](https://zh.annas-archive.gl/md5/c45f33a5c3e2fa673e835f4a0e69219c)
 > 
 > 译者：[飞龙](https://github.com/wizardforcel)
 > 

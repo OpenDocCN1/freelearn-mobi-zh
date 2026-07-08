@@ -1,6 +1,6 @@
 # Jetpack 和 Compose 安卓 UI 开发
 
-> 原文：[`zh.annas-archive.org/md5/e05c96dfd82582fb473d20ec96f6ad3e`](https://zh.annas-archive.org/md5/e05c96dfd82582fb473d20ec96f6ad3e)
+> 原文：[Android UI Development with Jetpack Compose : Bring Declarative and Native UIs to Life Quickly and Easily on Android Using Jetpack Compose](https://zh.annas-archive.gl/md5/e05c96dfd82582fb473d20ec96f6ad3e)
 > 
 > 译者：[飞龙](https://github.com/wizardforcel)
 > 

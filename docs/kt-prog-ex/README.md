@@ -1,6 +1,6 @@
 # Kotlin 编程示例
 
-> 原文：[`zh.annas-archive.org/md5/bc7313366af1bbaf74a58db4f8bafaba`](https://zh.annas-archive.org/md5/bc7313366af1bbaf74a58db4f8bafaba)
+> 原文：[KOTLIN PROGRAMMING BY EXAMPLE: build real-world android and web applications the kotlin way;build real-world android and web applications the kotlin](https://zh.annas-archive.gl/md5/bc7313366af1bbaf74a58db4f8bafaba)
 > 
 > 译者：[飞龙](https://github.com/wizardforcel)
 > 

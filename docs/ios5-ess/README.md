@@ -1,6 +1,6 @@
 # IOS5 精要
 
-> 原文：[`zh.annas-archive.org/md5/900fc46a7d3ff1b1bec0b3920950c269`](https://zh.annas-archive.org/md5/900fc46a7d3ff1b1bec0b3920950c269)
+> 原文：[IOS 5 essentials : harness iOS 5's new powerful features to create stunning applications](https://zh.annas-archive.gl/md5/900fc46a7d3ff1b1bec0b3920950c269)
 > 
 > 译者：[飞龙](https://github.com/wizardforcel)
 > 

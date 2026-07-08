@@ -1,6 +1,6 @@
 # IOS18 编程初学者指南
 
-> 原文：[`zh.annas-archive.org/md5/c79b480579d21d3ef3e2083c44cdee36`](https://zh.annas-archive.org/md5/c79b480579d21d3ef3e2083c44cdee36)
+> 原文：[iOS 18 Programming for Beginners](https://zh.annas-archive.gl/md5/c79b480579d21d3ef3e2083c44cdee36)
 > 
 > 译者：[飞龙](https://github.com/wizardforcel)
 > 
